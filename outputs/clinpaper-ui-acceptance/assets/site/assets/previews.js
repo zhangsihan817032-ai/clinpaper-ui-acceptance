@@ -1,0 +1,1 @@
+window.CLINPAPER_PREVIEWS = {};

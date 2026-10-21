@@ -1,0 +1,4250 @@
+{
+  "version": 2,
+  "revision": 3,
+  "updatedAt": "2026-10-21T05:14:05.978Z",
+  "issues": [
+    {
+      "id": "CP-001",
+      "pageId": "review-case",
+      "category": "字体",
+      "priority": "P1",
+      "actual": "各章节正文均为 14px / Regular 400 / 22px。",
+      "expected": "16px / Regular 400 / 1.6，约 25.6px 行高。",
+      "recommendation": "仅将病例解析章节正文调整为 16px / 25.6px，提示和辅助文字继续使用 14px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 450–1325 / y 410–1100；中下段见 actual-review-case-lower.png",
+        "figmaNode": "188:3936,188:3948"
+      },
+      "status": "待处理",
+      "title": "“病例解析结果”下方正文的字号与行高偏小",
+      "platform": "desktop",
+      "notes": [
+        "从“患者基本情况”到“患者观点与伦理声明”的正文均复用 text-sm / leading-22；同宽区域单屏容纳更多文字，阅读密度明显高于设计稿。",
+        "专项复核：Figma 首节文本节点 188:3936 与后续复用 info 组件 188:3948 均为 16px / 400 / 1.6。章节标题 16px / 500 / 22px、标题正文间距 12px、颜色 #333333 已匹配，无需联动修改。",
+        "建议：仅将病例解析章节正文从 14px / 22px 调整为 16px / 25.6px；14px 继续用于“必须补充”等提示和辅助信息，并同步回归长段换行后的区块高度。",
+        "证据坐标：actual-review-case.png · x 450–1325 / y 410–1100；actual-review-case-lower.png · 主内容长段；Figma 节点 188:3936、188:3948"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-002",
+      "pageId": "review-case",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "段落、分隔线与下一标题视觉间隔约 16px。",
+      "expected": "主要内容区块使用约 24px 的分组间隔。",
+      "recommendation": "在 section 容器层统一 24px 垂直间距",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+        "coordinates": "x 455–1305 / y 420–1130"
+      },
+      "status": "待处理",
+      "title": "正文区块之间的垂直节奏偏紧",
+      "platform": "desktop",
+      "notes": [
+        "该偏差与较小行高叠加后，使“病程时间轴、诊断分析、治疗经过”等长区块缺少清晰停顿。",
+        "建议：在 section 容器层统一 24px 垂直间距，段内维持现有紧凑值；避免在每个文本节点单独补 margin。",
+        "证据坐标：actual-review-case-lower.png · x 455–1305 / y 420–1130"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-003",
+      "pageId": "analyze-value",
+      "category": "字体",
+      "priority": "P1",
+      "actual": "原截图判断：分析结论正文约 14px / 21px。",
+      "expected": "表格正文为 16px / 约 25px。",
+      "recommendation": "复现原截图状态后决定修复或标记已忽略",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+        "coordinates": "x 650–1490 / y 650–1130"
+      },
+      "status": "待处理",
+      "title": "价值分析表正文排版密度过高",
+      "platform": "desktop",
+      "notes": [
+        "长句在每个单元格内显得拥挤，结论标题与解释文字的层级弱于设计稿。右侧文献面板因业务状态不同，不计入此问题。",
+        "增量复核：当前登录态样本中，主结论为 16px / 500、次级说明为 14px / 400，与 Figma 分层一致。保留原问题供前端核对截图版本、历史样式或状态分支。",
+        "建议：复现原截图状态；若仍为 14px 主结论则提升至 16px、1.6 行高，否则将此条标记为“已忽略”。",
+        "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-004",
+      "pageId": "analyze-value",
+      "category": "尺寸与对齐",
+      "priority": "P2",
+      "actual": "原截图视觉测量约 14–16px，上下文字更贴近分隔线。",
+      "expected": "原检查基准约 20px，行内容垂直居中。",
+      "recommendation": "确认设计交付版本后决定修复或标记已忽略",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+        "coordinates": "x 650–1490 / y 650–1130"
+      },
+      "status": "已忽略",
+      "title": "分析表单元格的纵向内边距不足",
+      "platform": "desktop",
+      "notes": [
+        "四行分析在相同内容密度下比设计稿更扁，左列标签与右列多行内容的视觉中心不够稳定。",
+        "增量复核：当前 DOM 与目标 Figma 节点均显示单元格 padding-block 为 12px。保留原问题供前端核对截图版本与当时组件实现。",
+        "建议：优先确认设计交付版本；若当前基准确认为 12px，将此条标记为“已忽略”，不要直接改为 20px。",
+        "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-005",
+      "pageId": "writing-angle",
+      "category": "字体",
+      "priority": "P1",
+      "actual": "原截图判断：侧栏说明与列表约 14px / 21px。",
+      "expected": "正文 16px / 约 26px，章节标题为 Medium。",
+      "recommendation": "复现原截图状态后决定修复或标记已解决",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+        "coordinates": "x 1505–1845 / y 290–1210"
+      },
+      "status": "待处理",
+      "title": "写作思路侧栏正文比设计稿更小、更紧",
+      "platform": "desktop",
+      "notes": [
+        "右侧长内容连续排列时，线上列表与段落的可扫描性明显弱于设计稿；候选卡片数量差异不作为问题。",
+        "增量复核：当前登录态样本中，章节标题为 16px / 500、正文为 16px / 400。保留原问题供前端核对历史版本或不同候选状态。",
+        "建议：复现原截图状态；若计算值已为 16px / 1.6，将此条标记为“已解决”或“已忽略”。",
+        "证据坐标：actual-writing-angle.png · x 1505–1845 / y 290–1210"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-006",
+      "pageId": "writing-requirements",
+      "category": "颜色",
+      "priority": "P2",
+      "actual": "原截图视觉判断：文字约 #B3B3B3，背景约 #F5F5F5。",
+      "expected": "禁用文字 #999999，背景 #F0F0F0。",
+      "recommendation": "核对截图版本或渲染环境后决定修复或标记已解决",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+        "coordinates": "x 1075–1490 / y 440–485"
+      },
+      "status": "待处理",
+      "title": "禁用引用样式的文字对比度偏低",
+      "platform": "desktop",
+      "notes": [
+        "“数字编号 · Vancouver”是可见配置结果，但在原截图中接近占位符灰度，识别性低于设计基准。",
+        "增量复核：当前登录态计算值为文字 #999999、背景 #F0F0F0，与 Figma 一致。保留原问题供前端核对截图版本或渲染环境。",
+        "建议：在目标浏览器复现原截图；若计算值与当前一致，将此条标记为“已解决”或“已忽略”。",
+        "证据坐标：actual-writing-requirements.png · x 1075–1490 / y 440–485"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-007",
+      "pageId": "confirm-outline",
+      "category": "字体",
+      "priority": "P1",
+      "actual": "原截图判断：写作重点正文约 14px / 21px。",
+      "expected": "编辑正文 17px / 1.6，约 27.2px。",
+      "recommendation": "复现原截图状态后决定修复或标记已解决",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-confirm-outline.png",
+        "coordinates": "x 950–1490 / y 459–686"
+      },
+      "status": "待处理",
+      "title": "大纲编辑区正文排版小于设计规范",
+      "platform": "desktop",
+      "notes": [
+        "多行写作重点在固定宽度文本框内行距偏紧，序号与正文的留白不足。设计稿中的错误提示条属于不同数据状态，不作为缺失问题。",
+        "增量复核：当前登录态 textarea 为 17px / 27.2px / 400，与 Figma 一致。保留原问题供前端核对截图版本或章节状态。",
+        "建议：复现原截图状态；若当前所有章节均为 17px / 1.6，将此条标记为“已解决”或“已忽略”。",
+        "证据坐标：actual-confirm-outline.png · x 950–1490 / y 459–686"
+      ],
+      "runIds": [
+        "cp-20261020-initial",
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-007",
+          "result": "待复核",
+          "actual": "feat-case OutlineConfirm.tsx L165、181–183：桌面重点正文text-[17px] leading-[1.6]，默认400。",
+          "expected": "新稿I194:22202;6948:34927为17px/400/1.6，即27.2px。",
+          "note": "本次源码声明已匹配新设计，不新增正文偏小问题；用户要求源码对比，未做目标编辑状态运行验收，因此保留CP-007原描述、原图和处理状态。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-007-source.svg",
+            "coordinates": "1440×290源码证据卡：x40 y93–237；非实际页面截图。",
+            "figmaNode": "I194:22202;6948:34927"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-008",
+      "pageId": "analyze-value",
+      "category": "线条",
+      "priority": "P2",
+      "actual": "表头底线、首列右线及行分隔线均为 1px #E0E0E0。",
+      "expected": "表格外框与单元格分隔线为 0.5px #E0E0E0。",
+      "recommendation": "仅将病例价值分析表的 grid border token 调整为 0.5px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+        "coordinates": "x 650–1490 / y 650–1130"
+      },
+      "status": "待处理",
+      "title": "病例价值分析表格线比设计稿更粗",
+      "platform": "desktop",
+      "notes": [
+        "线条颜色一致，但实际 1px 线在密集表格中更抢眼，弱化了标题与正文的视觉层级。",
+        "建议：仅将病例价值分析表的 grid border token 调整为 0.5px；页头、页脚、侧栏和常规表单继续保持 1px，避免全局替换。",
+        "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-009",
+      "pageId": "writing-requirements",
+      "category": "圆角",
+      "priority": "P2",
+      "actual": "写作语言、字数篇幅、摘要样式、引用样式四个表单框均为 12px。",
+      "expected": "四个 432 × 40px 表单框均为 8px。",
+      "recommendation": "将该页四个选择框的 radius token 从 12px 改为 8px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+        "coordinates": "x 510–1490 / y 350–500"
+      },
+      "status": "待处理",
+      "title": "写作要求表单框圆角大于设计值",
+      "platform": "desktop",
+      "notes": [
+        "边框粗细与颜色已匹配 1px #E0E0E0，但更大的圆角使表单视觉语言偏软，与同流程的章节标题和正文编辑框不一致。",
+        "建议：将该页四个选择框的 radius token 从 12px 改为 8px；不要修改主按钮的胶囊圆角。",
+        "证据坐标：actual-writing-requirements.png · x 510–1490 / y 350–500"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-010",
+      "pageId": "review-case",
+      "category": "字体",
+      "priority": "P2",
+      "actual": "16px / Medium 500 / 24px，颜色 #333333。",
+      "expected": "18px / Medium 500 / 25px，颜色 #333333。",
+      "recommendation": "将病例解析结果映射到 T18_bold，不改变下级章节标题",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 420–1340 / y 300–430",
+        "figmaNode": "188:3933"
+      },
+      "status": "待处理",
+      "title": "“病例解析结果”标题字号低于设计层级",
+      "platform": "desktop",
+      "notes": [
+        "字号小 2px、行高少 1px，使页面内总标题与下一级 16px 章节标题几乎没有层级差；字重与颜色本身一致。",
+        "建议：将“病例解析结果”单独映射到 T18_bold：18px / 500 / 25px，不要提升下方各章节标题。",
+        "证据坐标：actual-review-case.png · x 420–1340 / y 300–430；Figma 节点 188:3933"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-011",
+      "pageId": "review-case",
+      "category": "字体",
+      "priority": "P2",
+      "actual": "14px / Medium 500 / 22px，颜色 #333333。",
+      "expected": "16px / Medium 500 / 22px，颜色 #333333。",
+      "recommendation": "右栏文件分组标题使用 16px / 500 / 22px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 1390–1880 / y 180–300",
+        "figmaNode": "188:3991"
+      },
+      "status": "待处理",
+      "title": "右栏“病例文件”标题使用了辅助文字字号",
+      "platform": "desktop",
+      "notes": [
+        "实际标题沿用了 14px 辅助字号，虽然字重正确，但与右栏分组标题的设计层级不一致。",
+        "建议：将右栏文件分组标题改为 16px / 500 / 22px；“补充资料”等辅助操作仍保持 14px / 400。",
+        "证据坐标：actual-review-case.png · x 1390–1880 / y 180–300；Figma 节点 188:3991"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-012",
+      "pageId": "review-case",
+      "category": "字体",
+      "priority": "P2",
+      "actual": "两个可见文件标签均为 14px / 400 / 20px。",
+      "expected": "主要文件标签为 16px / 400 / 22px。",
+      "recommendation": "文件标签使用 16px 正文 token，长文件名用最大宽度和省略号适配",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 1420–1890 / y 230–390",
+        "figmaNode": "188:3996,188:3997"
+      },
+      "status": "待处理",
+      "title": "病例文件标签文字比 Figma 小 2px",
+      "platform": "desktop",
+      "notes": [
+        "线上长文件名与第二个文件名都落在 14px token；Figma 中主要文件标签使用 16px，使附件识别优先级高于辅助操作。",
+        "建议：文件标签正文统一采用 16px / 400 / 22px，并通过最大宽度和省略号处理长文件名，不要通过缩小字号适配。",
+        "证据坐标：actual-review-case.png · x 1420–1890 / y 230–390；Figma 节点 188:3996、188:3997"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-013",
+      "pageId": "review-case",
+      "category": "线条",
+      "priority": "P2",
+      "actual": "各 section 底部分隔线为 1px #E0E0E0。",
+      "expected": "各 info 区块底部分隔线为 0.5px #E0E0E0。",
+      "recommendation": "仅将病例正文 section 的 border-bottom 调整为 0.5px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+        "coordinates": "x 400–1340 / y 400–1160",
+        "figmaNode": "188:3934"
+      },
+      "status": "待处理",
+      "title": "病例内容区块分隔线比设计稿更粗",
+      "platform": "desktop",
+      "notes": [
+        "颜色一致，但 1px 线在连续长正文中形成较强切割感；该差异与 CP-008 的表格细线属于不同组件，需分别修正。",
+        "建议：仅将病例正文 section 的 border-bottom 调整为 0.5px #E0E0E0；页头、页脚和左右栏结构线继续保持 1px。",
+        "证据坐标：actual-review-case-lower.png · x 400–1340 / y 400–1160；Figma 节点 188:3934"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-014",
+      "pageId": "analyze-value",
+      "category": "圆角",
+      "priority": "P2",
+      "actual": "文献计数容器计算圆角为 24px。",
+      "expected": "880 × 82px 容器圆角为 12px。",
+      "recommendation": "将相关文献概览容器切换到 12px 内容卡片圆角 token",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+        "coordinates": "x 490–1850 / y 520–700",
+        "figmaNode": "188:6721"
+      },
+      "status": "待处理",
+      "title": "相关文献概览卡片圆角是设计值的两倍",
+      "platform": "desktop",
+      "notes": [
+        "实际使用的 rounded-xl token 映射为 24px，使信息汇总卡片呈现接近胶囊的轮廓，与页面内 12px 内容卡片不一致。",
+        "建议：为相关文献概览容器使用明确的 12px 内容卡片圆角 token；内部三个计数按钮不单独加圆角。",
+        "证据坐标：actual-analyze-value.png · x 490–1850 / y 520–700；Figma 节点 188:6721"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-015",
+      "pageId": "review-case",
+      "category": "圆角",
+      "priority": "P2",
+      "actual": "两个文件标签均为 100px 圆角（rounded-full）。",
+      "expected": "文件标签圆角为 16px。",
+      "recommendation": "文件标签切换为 16px 标签圆角 token",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 1390–1900 / y 225–390",
+        "figmaNode": "188:3996,188:3997"
+      },
+      "status": "已忽略",
+      "title": "病例文件标签误用了全胶囊圆角",
+      "platform": "desktop",
+      "notes": [
+        "当前 34px 高标签被处理成完整胶囊，轮廓比设计稿更圆；该问题与 CP-012 的标签字号差异属于同一组件的不同样式维度。",
+        "建议：将文件标签从 rounded-full 切换为明确的 16px 标签圆角 token，保持 1px #E0E0E0 边框不变。",
+        "证据坐标：actual-review-case.png · x 1390–1900 / y 225–390；Figma 节点 188:3996、188:3997"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-016",
+      "pageId": "review-case",
+      "category": "尺寸与对齐",
+      "priority": "P2",
+      "actual": "栏头高度 45px，padding 为 20px 24px 0。",
+      "expected": "栏头高度 57px，padding 为 20px 24px 12px。",
+      "recommendation": "恢复 12px padding-bottom，使栏头固定高度回到 57px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 1380–1910 / y 115–260",
+        "figmaNode": "188:3981"
+      },
+      "status": "待处理",
+      "title": "原始病例资料栏头高度少了 12px",
+      "platform": "desktop",
+      "notes": [
+        "缺少底部 12px 内边距后，文件内容区整体提前上移，导致“病例文件”紧贴栏头。",
+        "建议：给右栏 Top 恢复 12px padding-bottom，使固定栏头高度回到 57px；不要通过给下方单个标题加 margin 补偿。",
+        "证据坐标：actual-review-case.png · x 1380–1910 / y 115–260；Figma 节点 188:3981"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-017",
+      "pageId": "review-case",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "标题底部到“患者基本情况”顶部为 32px。",
+      "expected": "对应垂直间距为 20px。",
+      "recommendation": "首节取消顶部内边距，并将标题到内容列表间距统一为 20px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 430–1360 / y 300–520",
+        "figmaNode": "188:3932,188:3934"
+      },
+      "status": "待处理",
+      "title": "“病例解析结果”到首节标题的间距过大",
+      "platform": "desktop",
+      "notes": [
+        "实际由列表 margin-top 16px 与首个 section padding-top 16px 叠加而成；在标题本身偏小的情况下，额外留白进一步削弱了层级关联。",
+        "建议：首节取消顶部内边距，并将标题到内容列表的间距统一为 20px；section 保留 20px 底部内边距。",
+        "证据坐标：actual-review-case.png · x 430–1360 / y 300–520；Figma 节点 188:3932、188:3934"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-018",
+      "pageId": "review-case",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "标题底部到首个文件标签顶部为 8px。",
+      "expected": "6px 容器间距 + 8px 内容上内边距，共 14px。",
+      "recommendation": "文件区使用 6px gap，并为标签容器恢复 8px padding-block",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 1390–1900 / y 190–390",
+        "figmaNode": "188:3989,188:3995"
+      },
+      "status": "待处理",
+      "title": "病例文件标题与首个标签距离不足",
+      "platform": "desktop",
+      "notes": [
+        "文件标签向标题挤压，与栏头高度不足叠加后，右栏上半区的纵向节奏明显比设计稿紧。",
+        "建议：文件区外层 gap 使用 6px，并为标签容器恢复 8px padding-block；同时将标签图标与文字 gap 从 6px 改为设计的 4px。",
+        "证据坐标：actual-review-case.png · x 1390–1900 / y 190–390；Figma 节点 188:3989、188:3995"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-019",
+      "pageId": "review-case",
+      "category": "圆角",
+      "priority": "P2",
+      "actual": "病例正文内提示条圆角为 12px。",
+      "expected": "提示条圆角为 8px。",
+      "recommendation": "病例信息内嵌提示条切换为 8px 常用圆角 token",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 430–1360 / y 520–720",
+        "figmaNode": "188:3937"
+      },
+      "status": "待处理",
+      "title": "“必须补充”提示条圆角大于设计值",
+      "platform": "desktop",
+      "notes": [
+        "两处可见“必须补充”提示均使用 12px，使嵌入正文的小提示条比设计稿更像独立卡片。",
+        "建议：将病例信息内嵌提示条统一切换为 8px 常用圆角 token；不影响顶部风险提示条，其当前 8px 已匹配。",
+        "证据坐标：actual-review-case.png · x 430–1360 / y 520–720；Figma 节点 188:3937"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-020",
+      "pageId": "review-case",
+      "category": "颜色",
+      "priority": "P2",
+      "actual": "背景为 #F6F7F9。",
+      "expected": "背景为 #F5F6F9。",
+      "recommendation": "提示条背景绑定到 BG_light_1，移除局部 #F6F7F9",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 430–1360 / y 520–720",
+        "figmaNode": "188:3937"
+      },
+      "status": "已忽略",
+      "title": "正文补充提示条背景色偏浅",
+      "platform": "desktop",
+      "notes": [
+        "色差较小，但这是可由计算样式和 Figma 色值直接确认的 token 偏差；两处提示条均受影响。",
+        "建议：将病例内嵌提示条背景绑定到 BG_light_1 / #F5F6F9，避免继续使用局部硬编码 #F6F7F9。",
+        "证据坐标：actual-review-case.png · x 430–1360 / y 520–720；Figma 节点 188:3937"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-021",
+      "pageId": "review-case",
+      "category": "字重",
+      "priority": "P2",
+      "actual": "“必须补充”为 14px / Regular 400 / 20px。",
+      "expected": "标签为 14px / Medium 500；后续说明保持 Regular 400。",
+      "recommendation": "仅为必须补充标签 span 增加 500 字重",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+        "coordinates": "x 450–1360 / y 535–700",
+        "figmaNode": "188:3941,188:3942"
+      },
+      "status": "待处理",
+      "title": "“必须补充”标签缺少 Medium 强调",
+      "platform": "desktop",
+      "notes": [
+        "当前标签与后续说明使用相同字重，无法形成 Figma 中“提示类别 + 具体内容”的轻量层级。",
+        "建议：仅为“必须补充”标签 span 增加 500 字重，正文继续保持 400；两者字号和行高都维持 14px / 20px。",
+        "证据坐标：actual-review-case.png · x 450–1360 / y 535–700；Figma 节点 188:3941、188:3942"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-022",
+      "pageId": "writing-angle",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "候选卡片底部到表单标签顶部为 16px。",
+      "expected": "选择区底部到表单顶部为 32px。",
+      "recommendation": "将选择区与补充要求表单改为同级区块并使用 32px gap",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+        "coordinates": "x 400–1420 / y 300–720",
+        "figmaNode": "188:3549,188:3596"
+      },
+      "status": "待处理",
+      "title": "候选卡片与“补充要求”表单距离不足",
+      "platform": "desktop",
+      "notes": [
+        "线上将表单直接作为候选网格后的 16px margin 项，导致两个独立任务区块被压成同一组；候选数量差异不影响这项容器级间距判断。",
+        "建议：将“选择写作思路”和“补充要求”拆成两个同级区块，由页面容器统一使用 32px gap；选择区内部标题到卡片继续保持 16px。",
+        "证据坐标：actual-writing-angle.png · x 400–1420 / y 300–720；Figma 节点 188:3549、188:3596"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-023",
+      "pageId": "writing-angle",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "选中标题底部到“核心临床问题”顶部为 32px。",
+      "expected": "头部信息框底部到分析列表顶部为 16px。",
+      "recommendation": "将右栏头部信息与 list 的外层 gap 从 32px 改为 16px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+        "coordinates": "x 1505–1845 / y 220–520",
+        "figmaNode": "188:3620,188:3627"
+      },
+      "status": "待处理",
+      "title": "右栏选中标题与分析列表间距过大",
+      "platform": "desktop",
+      "notes": [
+        "线上右栏内容容器使用 32px gap，标题与第一节被拉开；列表内部标题到正文 6px、各分析区块 24px 的节奏均已匹配设计。",
+        "建议：将右栏“头部信息 + list”的外层 gap 从 32px 调整为 16px，不修改 list 内部的 6px 与 24px 间距。",
+        "证据坐标：actual-writing-angle.png · x 1505–1845 / y 220–520；Figma 节点 188:3620、188:3627"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-024",
+      "pageId": "writing-angle",
+      "category": "间距",
+      "priority": "P2",
+      "actual": "标签底部到 100px 高输入框顶部为 8px。",
+      "expected": "Label 底部到 content 顶部为 16px。",
+      "recommendation": "将表单 label-content gap 从 8px 改为 16px",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+        "coordinates": "x 400–1420 / y 500–760",
+        "figmaNode": "188:3597,188:3602"
+      },
+      "status": "待处理",
+      "title": "“补充要求”标签与输入框距离不足",
+      "platform": "desktop",
+      "notes": [
+        "表单外层当前使用 gap-8，使标签与输入框粘连；输入框自身 8px 圆角、12px × 8px 内边距均与 Figma 一致。",
+        "建议：将该表单的 label-content gap 从 8px 改为 16px，并保留输入框内部 padding 和 100px 高度。",
+        "证据坐标：actual-writing-angle.png · x 400–1420 / y 500–760；Figma 节点 188:3597、188:3602"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-025",
+      "pageId": "writing-angle",
+      "category": "字体",
+      "priority": "P2",
+      "actual": "14px / Regular 400 / 22px。",
+      "expected": "18px / Medium 500 / 28.8px。",
+      "recommendation": "标签切换到 18px / 500 / 1.6 的区块标题 token",
+      "evidence": {
+        "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+        "coordinates": "x 400–1420 / y 480–620",
+        "figmaNode": "188:3599"
+      },
+      "status": "待处理",
+      "title": "“补充要求”表单标签的字号和字重偏低",
+      "platform": "desktop",
+      "notes": [
+        "该标签被实现成辅助说明文字，弱于同页“选择写作思路”的区块标题层级；这也使 CP-024 的 8px 间距在视觉上显得更拥挤。",
+        "建议：将“补充要求”标签切换到 18px / 500 / 1.6 的区块标题 token；不要影响输入框内 17px / 400 / 24px 的编辑文字。",
+        "证据坐标：actual-writing-angle.png · x 400–1420 / y 480–620；Figma 节点 188:3599"
+      ],
+      "runIds": [
+        "cp-20261020-initial"
+      ],
+      "history": []
+    },
+    {
+      "id": "CP-026",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "间距",
+      "priority": "P2",
+      "title": "全文章节标题与正文之间少了 4px 间距",
+      "actual": "当前正文的 H2 margin-bottom 为 8px，紧接的正文无顶部 margin；摘要、引言、结论等同类章节一致。",
+      "expected": "194:22226 chapter gap 12px；H2 20px/500/32px 与正文 17px/400/27.2px。",
+      "recommendation": "将当前部署分支全文编辑器的 H2→正文间距从 8px 调为 12px；限定全文样式，保留章节间 20px，并回归首、中、尾段。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图1862×1251含浏览器栏：x421 y405 w648 h62（摘要标题及首段）；1680重放 H2底310.59、正文顶318.59，实距8px。",
+        "figmaNode": "194:22226"
+      },
+      "notes": [
+        "将当前部署分支全文编辑器的 H2→正文间距从 8px 调为 12px；限定全文样式，保留章节间 20px，并回归首、中、尾段。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "当前 .streaming-content H2 类虽含 mb-md，实际样式覆盖后为 8px；master 的自定义 editorTheme 另为 mb12，须确认部署分支后修复，不要盲改旧代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-026",
+          "result": "新增",
+          "actual": "当前正文的 H2 margin-bottom 为 8px，紧接的正文无顶部 margin；摘要、引言、结论等同类章节一致。",
+          "expected": "194:22226 chapter gap 12px；H2 20px/500/32px 与正文 17px/400/27.2px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图1862×1251含浏览器栏：x421 y405 w648 h62（摘要标题及首段）；1680重放 H2底310.59、正文顶318.59，实距8px。",
+            "figmaNode": "194:22226"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-027",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P2",
+      "title": "全文编辑器额外右内边距使正文可用宽度少了 28px",
+      "actual": "1680px 重放中编辑器 border-box 宽676px、padding-right:28px，正文与标题实际宽648px；目录边界之外已另外预留24px。",
+      "expected": "194:22224 main text 宽676px；194:22228 正文 min-width:100%；正文与目录间另有24px。",
+      "recommendation": "在病例全文布局中把选择/改写操作的28px槽位移到676px正文区域外，或以不占流的定位承载；保持正文676px与目录24px间距，不能全局删 pr-28。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+        "coordinates": "静态DOM/CSS重放1680×1000/DPR1，非在线截图：x330 y185 w676 h735；文本右边978，编辑器右边1006。原生表现另见本页实际截图。",
+        "figmaNode": "194:22224"
+      },
+      "notes": [
+        "在病例全文布局中把选择/改写操作的28px槽位移到676px正文区域外，或以不占流的定位承载；保持正文676px与目录24px间距，不能全局删 pr-28。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/common/LexicalStreamingText/index.tsx L452–453，showDesktopSelectionGutter 为 true 时追加 pr-28；有操作槽位的用途，修改时须保留改写入口。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-027",
+          "result": "新增",
+          "actual": "1680px 重放中编辑器 border-box 宽676px、padding-right:28px，正文与标题实际宽648px；目录边界之外已另外预留24px。",
+          "expected": "194:22224 main text 宽676px；194:22228 正文 min-width:100%；正文与目录间另有24px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1，非在线截图：x330 y185 w676 h735；文本右边978，编辑器右边1006。原生表现另见本页实际截图。",
+            "figmaNode": "194:22224"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-028",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "间距",
+      "priority": "P2",
+      "title": "全文内容区的顶部留白比设计多 16px",
+      "actual": "内容滚动区从 y153 开始，pt-32 后全文大标题从 y185 开始，顶部 padding 32px。",
+      "expected": "194:22223 内容容器 py16；正文起点与内容容器顶部之间16px。",
+      "recommendation": "核对当前部署分支的全文滚动容器，将桌面顶部 pt-32 改为 pt-16；不要将内容差异导致的大标题换行高度计入该间距。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+        "coordinates": "静态DOM/CSS重放1680×1000/DPR1：x330 y153 w676 h69；内容容器y153至标题框y185，相距32px。原生截图x421 y274起可见同一留白。",
+        "figmaNode": "194:22223"
+      },
+      "notes": [
+        "核对当前部署分支的全文滚动容器，将桌面顶部 pt-32 改为 pt-16；不要将内容差异导致的大标题换行高度计入该间距。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "当前 DOM：scrollbar-hide ... overflow-y-auto ... pt-32；master 的全文实现结构与部署版不同，此项按部署分支定位。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-028",
+          "result": "新增",
+          "actual": "内容滚动区从 y153 开始，pt-32 后全文大标题从 y185 开始，顶部 padding 32px。",
+          "expected": "194:22223 内容容器 py16；正文起点与内容容器顶部之间16px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1：x330 y153 w676 h69；内容容器y153至标题框y185，相距32px。原生截图x421 y274起可见同一留白。",
+            "figmaNode": "194:22223"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-029",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "字体",
+      "priority": "P2",
+      "title": "风险处理建议的正文行高低于设计",
+      "actual": "右侧每条处理建议为17px / 400 / line-height:1.5，即25.5px；已检查7条建议同类样式。",
+      "expected": "I194:22278;5010:24742 为17px / Regular400 / line-height:1.6，即27.2px；文字#333。",
+      "recommendation": "将 MobileSubmissionCheck.jsx 桌面建议正文 leading-[1.5] 调为 leading-[1.6]；移动端如有独立规范应另设分支。字号与字重保持17px/400。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图：x1507 y424 w325 h125，第一条风险建议；1680重放对应x1325 y301。",
+        "figmaNode": "I194:22278;5010:24742"
+      },
+      "notes": [
+        "将 MobileSubmissionCheck.jsx 桌面建议正文 leading-[1.5] 调为 leading-[1.6]；移动端如有独立规范应另设分支。字号与字重保持17px/400。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L54–55。差值每行1.7px；不是正文小字号或字重错误。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-029",
+          "result": "新增",
+          "actual": "右侧每条处理建议为17px / 400 / line-height:1.5，即25.5px；已检查7条建议同类样式。",
+          "expected": "I194:22278;5010:24742 为17px / Regular400 / line-height:1.6，即27.2px；文字#333。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y424 w325 h125，第一条风险建议；1680重放对应x1325 y301。",
+            "figmaNode": "I194:22278;5010:24742"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-030",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "间距",
+      "priority": "P2",
+      "title": "投稿风险提示条左右内边距不足",
+      "actual": "非成功态提示条使用 p-12，即左右各12px，上下各12px。",
+      "expected": "194:22277 风险提示条 px20 / py12，图标与文字整体应向内收8px。",
+      "recommendation": "将 MobileSubmissionCheck.jsx 桌面风险态的 p-12 拆为 px-20 py-12，保留移动分支与内部 gap8 / 标题图标间距12。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图：x1507 y258 w325 h76，风险汇总提示条。",
+        "figmaNode": "194:22277"
+      },
+      "notes": [
+        "将 MobileSubmissionCheck.jsx 桌面风险态的 p-12 拆为 px-20 py-12，保留移动分支与内部 gap8 / 标题图标间距12。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L141；successDesktop 分支已有 px-20 py-12，风险态未采用。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-030",
+          "result": "新增",
+          "actual": "非成功态提示条使用 p-12，即左右各12px，上下各12px。",
+          "expected": "194:22277 风险提示条 px20 / py12，图标与文字整体应向内收8px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76，风险汇总提示条。",
+            "figmaNode": "194:22277"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-031",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "圆角",
+      "priority": "P2",
+      "title": "投稿风险提示条圆角多了 4px",
+      "actual": "当前风险提示条 rounded-lg → 四角12px。",
+      "expected": "194:22277 风险提示条四角8px；背景#faf0f0。",
+      "recommendation": "桌面风险态改为 rounded-md（8px），不要全局修改 rounded-lg token，以免影响设计要求12px的卡片。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图：x1507 y258 w325 h76；检查提示条左上、右上和底角。",
+        "figmaNode": "194:22277"
+      },
+      "notes": [
+        "桌面风险态改为 rounded-md（8px），不要全局修改 rounded-lg token，以免影响设计要求12px的卡片。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L141。颜色#faf0f0匹配，问题仅为圆角。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-031",
+          "result": "新增",
+          "actual": "当前风险提示条 rounded-lg → 四角12px。",
+          "expected": "194:22277 风险提示条四角8px；背景#faf0f0。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76；检查提示条左上、右上和底角。",
+            "figmaNode": "194:22277"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-032",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "圆角",
+      "priority": "P2",
+      "title": "风险等级标签圆角少了 1px",
+      "actual": "“必须处理”等风险标签为 rounded-[5px]，四角5px。",
+      "expected": "I194:22278;5010:24735 等级标签四角6px；文字14px/500/20px，底色#e3443f。",
+      "recommendation": "将 MobileSubmissionCheck.jsx 风险标签 rounded-[5px] 调为 rounded-[6px]，只影响风险等级标签；不要调整文献的5px标签。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图：x1507 y354 w68 h24，“必须处理”标签。",
+        "figmaNode": "I194:22278;5010:24735"
+      },
+      "notes": [
+        "将 MobileSubmissionCheck.jsx 风险标签 rounded-[5px] 调为 rounded-[6px]，只影响风险等级标签；不要调整文献的5px标签。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L39。字号、字重、标签内边距和底色已匹配，此项为轻微圆角差异。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-032",
+          "result": "新增",
+          "actual": "“必须处理”等风险标签为 rounded-[5px]，四角5px。",
+          "expected": "I194:22278;5010:24735 等级标签四角6px；文字14px/500/20px，底色#e3443f。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y354 w68 h24，“必须处理”标签。",
+            "figmaNode": "I194:22278;5010:24735"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-033",
+      "pageId": "write-check",
+      "platform": "desktop",
+      "category": "圆角",
+      "priority": "P2",
+      "title": "风险详情灰底卡片圆角少了 4px",
+      "actual": "展开的风险详情使用 MobileDetailList 默认 rounded-md → 四角8px。",
+      "expected": "I194:22278;5010:24751 详情背景#f5f6f9，四角12px，px12/py16。",
+      "recommendation": "在桌面风险详情调用处覆盖为 rounded-lg（12px），或为详情组件增加明确的外观参数；不要改变所有 rounded-md token。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+        "coordinates": "原生截图：x1507 y602 w325 h188，“问题描述”灰底详情框。",
+        "figmaNode": "I194:22278;5010:24751"
+      },
+      "notes": [
+        "在桌面风险详情调用处覆盖为 rounded-lg（12px），或为详情组件增加明确的外观参数；不要改变所有 rounded-md token。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileDetailList.jsx L6。文献解读已用 !rounded-lg 覆盖为12px，风险详情缺少相同的指定。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-033",
+          "result": "新增",
+          "actual": "展开的风险详情使用 MobileDetailList 默认 rounded-md → 四角8px。",
+          "expected": "I194:22278;5010:24751 详情背景#f5f6f9，四角12px，px12/py16。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y602 w325 h188，“问题描述”灰底详情框。",
+            "figmaNode": "I194:22278;5010:24751"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-034",
+      "pageId": "prepare-literature",
+      "platform": "desktop",
+      "category": "间距",
+      "priority": "P2",
+      "title": "解读与风险详情正文的左缩进少了 2px",
+      "actual": "MobileDetailList 的说明段落 pl-16；文献解读和风险详情实际均为16px。",
+      "expected": "文献详情 I194:24501;7248:74039 的说明正文 pl18；风险详情 I194:22278;5010:24751;4670:82044 同为18px。",
+      "recommendation": "为这两处桌面详情正文设 pl-18，保留外层文献左12/右20、风险左右12的差异；移动端按独立规范复核。共享根因只登记一次。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+        "coordinates": "原生截图：x608 y551 w880 h179，展开解读卡片；1680重放x517 y430 w880 h178.56，正文相对内容左边pl16。",
+        "figmaNode": "I194:24501;7248:74039"
+      },
+      "notes": [
+        "为这两处桌面详情正文设 pl-18，保留外层文献左12/右20、风险左右12的差异；移动端按独立规范复核。共享根因只登记一次。",
+        "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+        "源码：src/components/business/PaperCreate/MobileDetailList.jsx L15。正文14px/400/22.4px、#666均匹配；本项同时关联全文风险详情，不另建重复问题。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-034",
+          "result": "新增",
+          "actual": "MobileDetailList 的说明段落 pl-16；文献解读和风险详情实际均为16px。",
+          "expected": "文献详情 I194:24501;7248:74039 的说明正文 pl18；风险详情 I194:22278;5010:24751;4670:82044 同为18px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+            "coordinates": "原生截图：x608 y551 w880 h179，展开解读卡片；1680重放x517 y430 w880 h178.56，正文相对内容左边pl16。",
+            "figmaNode": "I194:24501;7248:74039"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-035",
+      "pageId": "export-materials",
+      "platform": "desktop",
+      "category": "圆角",
+      "priority": "P2",
+      "title": "【源码待运行复核】导出文件图标容器圆角为设计的两倍",
+      "actual": "master e91cb4e5 的桌面非compact分支 rounded-xl →24px；图标容器48×48。当前项目导出未开始，尚无实际导出结果页证据。",
+      "expected": "194:22099 文件图标容器48×48、四角12px、背景#f5f6f9。",
+      "recommendation": "在 ExportFileList.jsx 非compact桌面分支改用12px圆角（rounded-lg），保留48px容器与32px图标；确认部署分支后在真实导出页复核。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+        "coordinates": "源码证据卡1440×552：L32及token说明位于x52 y235至330；不是实际页面截图。",
+        "figmaNode": "194:22099"
+      },
+      "notes": [
+        "在 ExportFileList.jsx 非compact桌面分支改用12px圆角（rounded-lg），保留48px容器与32px图标；确认部署分支后在真实导出页复核。",
+        "证据等级：仅源码确认，当前运行态待复核；不能据此声称线上已复现。",
+        "源码：src/components/business/PaperCreate/ExportFileList.jsx L11、L32；IntelligentCaseReportFlow/CaseReportStepViews.jsx L3318–3324 未传compact。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-035",
+          "result": "新增",
+          "actual": "master e91cb4e5 的桌面非compact分支 rounded-xl →24px；图标容器48×48。当前项目导出未开始，尚无实际导出结果页证据。",
+          "expected": "194:22099 文件图标容器48×48、四角12px、背景#f5f6f9。",
+          "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L32及token说明位于x52 y235至330；不是实际页面截图。",
+            "figmaNode": "194:22099"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-036",
+      "pageId": "export-materials",
+      "platform": "desktop",
+      "category": "线条",
+      "priority": "P2",
+      "title": "【源码待运行复核】导出文件行底分隔线偏粗",
+      "actual": "master e91cb4e5 桌面默认分支 border-b 为1px solid #e0e0e0；compact分支才显式0.5px。当前导出结果页未开放。",
+      "expected": "194:22097 文件行底部0.5px solid #e0e0e0。颜色一致，差异在声明线宽。",
+      "recommendation": "将 ExportFileList.jsx 非compact桌面行底 border-b 改为显式0.5px，或复用项目 hairline 实现；只针对该分隔线，保留颜色。真实页面在相同DPR下复核。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+        "coordinates": "源码证据卡1440×552：L26及设计CP-036说明，x52 y180至420；不是实际页面截图。",
+        "figmaNode": "194:22097"
+      },
+      "notes": [
+        "将 ExportFileList.jsx 非compact桌面行底 border-b 改为显式0.5px，或复用项目 hairline 实现；只针对该分隔线，保留颜色。真实页面在相同DPR下复核。",
+        "证据等级：仅源码确认，当前运行态待复核。此项依据作者声明1px，不是把DPR1下0.5px计算为1px误判为缺陷。",
+        "源码：src/components/business/PaperCreate/ExportFileList.jsx L25–26；src/styles/index.css border-light为#e0e0e0。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-source-remaining"
+      ],
+      "history": [
+        {
+          "issueId": "CP-036",
+          "result": "新增",
+          "actual": "master e91cb4e5 桌面默认分支 border-b 为1px solid #e0e0e0；compact分支才显式0.5px。当前导出结果页未开放。",
+          "expected": "194:22097 文件行底部0.5px solid #e0e0e0。颜色一致，差异在声明线宽。",
+          "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L26及设计CP-036说明，x52 y180至420；不是实际页面截图。",
+            "figmaNode": "194:22097"
+          },
+          "runId": "cp-20261021-source-remaining",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-037",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P1",
+      "title": "【GitLab源码】页面缺少“病例标题”表单",
+      "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+      "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+      "recommendation": "在章节卡片上方补充病例标题表单；标题草稿绑定现有title字段，表单到卡片16px。此项只指出可见控件缺失，不验保存接口业务。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+        "coordinates": "源码证据卡1440×435，x48 y128起；Figma x520 y184 w880 h70；源码返回树L553–568。",
+        "figmaNode": "194:22160"
+      },
+      "notes": [
+        "在章节卡片上方补充病例标题表单；标题草稿绑定现有title字段，表单到卡片16px。此项只指出可见控件缺失，不验保存接口业务。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L553–568；原值读取294。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-037",
+          "result": "新增",
+          "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+          "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x520 y184 w880 h70；源码返回树L553–568。",
+            "figmaNode": "194:22160"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-038",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P1",
+      "title": "【GitLab源码】章节区缺少外层细边框圆角卡片与内边距",
+      "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+      "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+      "recommendation": "为双栏外层补充12px圆角、#e0e0e0细线和20px水平内边距；保留左栏280px及右栏pl40。复用项目hairline-box/hairline-radius-lg并按DPR复核，不全局改边框。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+        "coordinates": "源码证据卡1440×493，x48 y128起；Figma x520 y270 w880 h398；源码L563外层声明，右侧可用宽度为静态推导。",
+        "figmaNode": "194:22173"
+      },
+      "notes": [
+        "为双栏外层补充12px圆角、#e0e0e0细线和20px水平内边距；保留左栏280px及右栏pl40。复用项目hairline-box/hairline-radius-lg并按DPR复核，不全局改边框。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L376–377、455、562–566。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-038",
+          "result": "新增",
+          "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+          "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+            "coordinates": "源码证据卡1440×493，x48 y128起；Figma x520 y270 w880 h398；源码L563外层声明，右侧可用宽度为静态推导。",
+            "figmaNode": "194:22173"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-039",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "字体",
+      "priority": "P2",
+      "title": "【GitLab源码】3个表单标签字号、字重和颜色偏重",
+      "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+      "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+      "recommendation": "仅这3个桌面标签改为text-sm font-normal text-text-secondary，保留leading-22。显式font-normal覆盖全局h3默认500；章节菜单选中项仍保留16px/500。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+        "coordinates": "源码证据卡1440×522，x48 y128起；Figma x540 y287、x860 y287、x860 y373；源码L378/L458/L474。",
+        "figmaNode": "194:22177,194:22193,I194:22202;6791:139258"
+      },
+      "notes": [
+        "仅这3个桌面标签改为text-sm font-normal text-text-secondary，保留leading-22。显式font-normal覆盖全局h3默认500；章节菜单选中项仍保留16px/500。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L378、458、474。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-039",
+          "result": "新增",
+          "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+          "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x540 y287、x860 y287、x860 y373；源码L378/L458/L474。",
+            "figmaNode": "194:22177,194:22193,I194:22202;6791:139258"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-040",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "间距",
+      "priority": "P2",
+      "title": "【GitLab源码】右侧标签和表单分组间距偏大",
+      "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+      "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+      "recommendation": "右侧最外层gap24→16，标题组gap12→8；重点区增加“标签+编辑框”的gap8子组，外层继续gap12分隔补充提示，避免把所有gap12统一替换。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+        "coordinates": "源码证据卡1440×551，x48 y128起；Figma标题标签底309→输入顶317为8；输入底357→下标签顶373为16；重点标签底395→编辑顶403为8。",
+        "figmaNode": "194:22190,194:22191,194:22202"
+      },
+      "notes": [
+        "右侧最外层gap24→16，标题组gap12→8；重点区增加“标签+编辑框”的gap8子组，外层继续gap12分隔补充提示，避免把所有gap12统一替换。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L455–456、473–480。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-040",
+          "result": "新增",
+          "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+          "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma标题标签底309→输入顶317为8；输入底357→下标签顶373为16；重点标签底395→编辑顶403为8。",
+            "figmaNode": "194:22190,194:22191,194:22202"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-041",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P2",
+      "title": "【GitLab源码】章序/预计字数未右对齐",
+      "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+      "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+      "recommendation": "标题行占满右栏宽度并justify-between；保留辅助信息14px/#999，必要时增加shrink-0，避免与标签挤压。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+        "coordinates": "源码证据卡1440×522，x48 y128起；Figma x860 y287 w519 h22，辅助信息右边界x1379；源码L457 gap12。",
+        "figmaNode": "194:22192,194:22194"
+      },
+      "notes": [
+        "标题行占满右栏宽度并justify-between；保留辅助信息14px/#999，必要时增加shrink-0，避免与标签挤压。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L457–461。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-041",
+          "result": "新增",
+          "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+          "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x860 y287 w519 h22，辅助信息右边界x1379；源码L457 gap12。",
+            "figmaNode": "194:22192,194:22194"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-042",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P1",
+      "title": "【GitLab源码】“必须补充”提示应分两行而非横排",
+      "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+      "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+      "recommendation": "内部改成两行：保留红点与标签的gap12，说明另起一行并pl20，行间gap2。保留外层背景#f5f6f9、padding16/12和8px圆角。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+        "coordinates": "源码证据卡1440×551，x48 y128起；Figma x860 y565 w519 h86，说明从x896第二行起；源码L481–486横向flex。",
+        "figmaNode": "194:22203,194:22204,194:22208"
+      },
+      "notes": [
+        "内部改成两行：保留红点与标签的gap12，说明另起一行并pl20，行间gap2。保留外层背景#f5f6f9、padding16/12和8px圆角。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L481–487。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-042",
+          "result": "新增",
+          "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+          "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma x860 y565 w519 h86，说明从x896第二行起；源码L481–486横向flex。",
+            "figmaNode": "194:22203,194:22204,194:22208"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-043",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "颜色",
+      "priority": "P2",
+      "title": "【GitLab源码】补充提示说明文字颜色偏深",
+      "actual": "L486说明段落text-text-primary，即#333333。",
+      "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+      "recommendation": "仅提示说明段落改用text-text-secondary；保留标题、红点与背景色。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+        "coordinates": "源码证据卡1440×435，x48 y128起；Figma x896 y600 w483 h40；源码L486和src/styles/index.css L17–18。",
+        "figmaNode": "194:22209"
+      },
+      "notes": [
+        "仅提示说明段落改用text-text-secondary；保留标题、红点与背景色。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L484–486；token index.css:17–18。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-043",
+          "result": "新增",
+          "actual": "L486说明段落text-text-primary，即#333333。",
+          "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x896 y600 w483 h40；源码L486和src/styles/index.css L17–18。",
+            "figmaNode": "194:22209"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    },
+    {
+      "id": "CP-044",
+      "pageId": "confirm-outline",
+      "platform": "desktop",
+      "category": "尺寸与对齐",
+      "priority": "P2",
+      "title": "【GitLab源码】底部操作内容行少了4px高度",
+      "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+      "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+      "recommendation": "底部880px内容行设置min-h44并保持items-center；保留40px按钮、pt12/pb24。边线是否占盒模型高度需运行时核对，不在源码表中推断最终总高差值。",
+      "evidence": {
+        "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+        "coordinates": "源码证据卡1440×464，x48 y128起；Figma footer x520 y778 w880 h44；按钮y780 h40；源码L589内容行与Button large声明。",
+        "figmaNode": "I194:22215;6960:55463"
+      },
+      "notes": [
+        "底部880px内容行设置min-h44并保持items-center；保留40px按钮、pt12/pb24。边线是否占盒模型高度需运行时核对，不在源码表中推断最终总高差值。",
+        "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L546–550、588–590；Button/index.tsx:31。",
+        "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+      ],
+      "status": "待处理",
+      "runIds": [
+        "cp-20261021-outline-design-update"
+      ],
+      "history": [
+        {
+          "issueId": "CP-044",
+          "result": "新增",
+          "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+          "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+            "coordinates": "源码证据卡1440×464，x48 y128起；Figma footer x520 y778 w880 h44；按钮y780 h40；源码L589内容行与Button large声明。",
+            "figmaNode": "I194:22215;6960:55463"
+          },
+          "runId": "cp-20261021-outline-design-update",
+          "date": "2026-10-21",
+          "previousStatus": "待处理",
+          "status": "待处理"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "id": "cp-20261020-initial",
+      "name": "病例报告全流程 · 首次样式验收（历史迁移）",
+      "date": "2026-10-20",
+      "type": "首次验收",
+      "scope": "病例报告全流程 8 步；前 5 步实际页面对照，后 3 步待线上复核。原报告十八轮合并保留为一个历史批次。",
+      "coverage": {
+        "desktop": "1680px；5 / 8 步已复核",
+        "mobile": "未进行产品移动端验收；历史 390×844 检查仅针对报告本身"
+      },
+      "conclusion": "原报告十八轮收敛；25 条问题保留，3 个步骤待线上复核。",
+      "counts": {
+        "added": 25,
+        "fixed": 0,
+        "reopened": 0,
+        "pendingReview": 3
+      },
+      "pages": [
+        {
+          "id": "review-case",
+          "name": "核对病例资料",
+          "figmaNode": "188:3923",
+          "platform": "desktop",
+          "status": "已复核",
+          "notes": [
+            "Figma Frame 188:3923 · 首屏与滚动中段已采集",
+            "保留 CP-001、CP-002、CP-010–CP-013、CP-015–CP-021；本轮未新增重复条目，专项加固 CP-001 的全段正文证据。",
+            "“病例解析结果”下方章节正文实际统一为 14px / 400 / 22px，Figma 节点 188:3936 与复用组件 188:3948 均为 16px / 400 / 1.6。章节标题、12px 标题正文间距、字重和颜色均匹配，仅正文尺寸与行高需要调整。"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-review-case.png",
+              "label": "Figma 核对病例资料"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+              "label": "实际核对病例资料"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+              "label": "实际核对病例资料 · 中下段"
+            }
+          ]
+        },
+        {
+          "id": "analyze-value",
+          "name": "分析病例价值",
+          "figmaNode": "188:6707",
+          "platform": "desktop",
+          "status": "已复核",
+          "notes": [
+            "Figma Frame 188:6707 · 页面业务状态与设计示例不同",
+            "保留 CP-003、CP-004；CP-008 为表格 0.5px 细线；新增 CP-014 文献概览圆角：实际 24px，设计 12px。",
+            "提示标题 17px / 500、提示正文 14px / 400、区块标题 18px / 500、计数 16px / 500 均匹配 Figma；原 CP-003、CP-004 继续保留。"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-analyze-value.png",
+              "label": "Figma 分析病例价值"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+              "label": "实际分析病例价值"
+            }
+          ]
+        },
+        {
+          "id": "writing-angle",
+          "name": "明确写作思路",
+          "figmaNode": "188:3541",
+          "platform": "desktop",
+          "status": "已复核",
+          "notes": [
+            "Figma Frame 188:3541 · 候选数量不同，不比较数据语义",
+            "保留 CP-005；新增 CP-022–CP-025，覆盖候选区到表单、右栏标题到列表、表单标签到输入框三处间距，以及表单标签的字号/字重/行高。",
+            "候选卡片圆角 12px、列间距 16px、卡片内部 6px / 12px 节奏均匹配；右栏列表内部标题到正文 6px、区块间 24px 也匹配，仅外层使用了错误的 32px gap。"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-writing-angle.png",
+              "label": "Figma 明确写作思路"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+              "label": "实际明确写作思路"
+            }
+          ]
+        },
+        {
+          "id": "writing-requirements",
+          "name": "补充写作要求",
+          "figmaNode": "188:3665",
+          "platform": "desktop",
+          "status": "已复核",
+          "notes": [
+            "Figma Frame 188:3665 · 表单计算样式已复核",
+            "保留 CP-006；新增 CP-009 表单框圆角：实际 12px，设计 8px。",
+            "当前样本表单值 17px / 400，禁用文字 #999999、背景 #F0F0F0、边框 1px #E0E0E0；原颜色记录继续保留供前端复现。"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-writing-requirements.png",
+              "label": "Figma 补充写作要求"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+              "label": "实际补充写作要求"
+            }
+          ]
+        },
+        {
+          "id": "confirm-outline",
+          "name": "确认大纲",
+          "figmaNode": "188:3788",
+          "platform": "desktop",
+          "status": "已复核",
+          "notes": [
+            "Figma Frame 188:3788 · 设计稿与实际所选章节不同",
+            "CP-007 编辑区正文的字号与行高。",
+            "当前样本编辑正文 17px / 1.6 / 400、章节标题 16px / 500，编辑框 1px #E0E0E0、8px 圆角；原记录继续保留供前端复现。"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-confirm-outline.png",
+              "label": "Figma 确认大纲"
+            },
+            {
+              "asset": "assets/runs/cp-20261020-initial/actual-confirm-outline.png",
+              "label": "实际确认大纲"
+            }
+          ]
+        },
+        {
+          "id": "prepare-literature",
+          "name": "准备正文文献",
+          "figmaNode": "188:6120",
+          "platform": "desktop",
+          "status": "待线上复核",
+          "notes": [
+            "Figma Frame 188:6120",
+            "未点击前一步确认按钮，避免修改线上业务状态。解锁后需补采实际页面并完成对照。",
+            "核对正文 Regular 400、标题 Medium 500",
+            "核对筛选控件、标签和卡片 8px 圆角",
+            "核对结构线 1px #E0E0E0 / 弱分隔线 #E8E8E8",
+            "核对左右栏宽度与 24px 内容间距"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-prepare-literature.png",
+              "label": "Figma 准备正文文献"
+            }
+          ]
+        },
+        {
+          "id": "write-check",
+          "name": "撰写并检查全文",
+          "figmaNode": "188:3857",
+          "platform": "desktop",
+          "status": "待线上复核",
+          "notes": [
+            "Figma Frame 188:3857",
+            "该页面仅展示设计基准，所有线上样式结论保持空缺，不使用推测数据代替证据。",
+            "重点复核编辑器正文的字号、行高与 Regular 400",
+            "核对提示面板 8–12px 圆角层级",
+            "核对工具栏分隔线的粗细与颜色",
+            "核对工具栏、正文与右侧检查区对齐"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-write-check.png",
+              "label": "Figma 撰写并检查全文"
+            }
+          ]
+        },
+        {
+          "id": "export-materials",
+          "name": "导出投稿材料",
+          "figmaNode": "188:3743",
+          "platform": "desktop",
+          "status": "待线上复核",
+          "notes": [
+            "Figma Frame 188:3743",
+            "未生成或导出任何投稿文件；待真实页面开放后补充在线截图和问题项。",
+            "核对导出卡片的 8px 圆角与 16px 内边距",
+            "核对正文 Regular 400、操作标题 Medium 500",
+            "核对文件标签、成功提示的颜色 token",
+            "核对卡片边框与区块分隔线的粗细和颜色"
+          ],
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261020-initial/figma-export-materials.png",
+              "label": "Figma 导出投稿材料"
+            }
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "title": "第 1 轮 · 结构检查",
+          "result": "覆盖 8 步",
+          "note": "建立 8 个 Frame 映射，核对页面结构、主内容宽度、侧栏与底部操作区；排除业务状态导致的结构差异。"
+        },
+        {
+          "title": "第 2 轮 · 像素细查",
+          "result": "7 项候选",
+          "note": "放大比对字号、行高、间距、颜色与圆角，形成初始候选清单。"
+        },
+        {
+          "title": "第 3 轮 · 问题复核",
+          "result": "保留 7 项",
+          "note": "逐条回看截图证据并保留原始问题记录；对当前登录态计算值不同的条目追加复核备注，不覆盖历史发现。"
+        },
+        {
+          "title": "第 4 轮 · 字重与线条专项",
+          "result": "新增 2 项",
+          "note": "逐页检查 Regular 400 / Medium 500、边框宽度与颜色；新增表格 0.5px 线宽、表单 8px 圆角差异。"
+        },
+        {
+          "title": "第 5 轮 · 增量复核",
+          "result": "新增 0 项",
+          "note": "复核标题、正文、表单、表格和结构分隔线；字重及线条颜色未发现新增偏差，问题清单收敛为 9 项。"
+        },
+        {
+          "title": "第 6 轮 · 字号与字重逐节点核对",
+          "result": "新增 3 项",
+          "note": "用登录态计算样式逐项对照 Figma 子节点，新增病例解析标题、病例文件标题及文件标签的字号差异；可见文本字重仅使用 400 / 500，未确认新的字重错配。"
+        },
+        {
+          "title": "第 7 轮 · 线条与圆角专项",
+          "result": "新增 2 项",
+          "note": "继续检查内容分隔线与文献概览容器，新增病例区块 0.5px 分隔线和文献概览 12px 圆角差异；线条颜色均保持 #E0E0E0。"
+        },
+        {
+          "title": "第 8 轮 · 新增项回归复核",
+          "result": "新增 0 项",
+          "note": "回看 5 个线上页面的标题、正文、标签、表单、表格、边框与圆角；未再发现可由 Figma 节点和计算样式共同确认的新差异，问题清单收敛为 14 项。"
+        },
+        {
+          "title": "第 9 轮 · 病例解析层级专项",
+          "result": "新增 2 项",
+          "note": "在 1680px 基准视口复核“病例解析结果”及相邻内容；确认 CP-010 的 16px 对 18px 差异，并新增标题到首节间距、提示标签字重两项。"
+        },
+        {
+          "title": "第 10 轮 · 右栏文件区专项",
+          "result": "新增 3 项",
+          "note": "对照右栏 Top 与文件标签节点，新增标签 100px 对 16px 圆角、栏头缺少 12px 下内边距、文件标题到标签间距不足三项。"
+        },
+        {
+          "title": "第 11 轮 · 补充提示条专项",
+          "result": "新增 2 项",
+          "note": "检查“必须补充”提示条的计算样式，新增 12px 对 8px 圆角及 #F6F7F9 对 #F5F6F9 背景色差异。"
+        },
+        {
+          "title": "第 12 轮 · 逐项回归",
+          "result": "新增 0 项",
+          "note": "重新核对字号、字重、行高、间距、颜色、线条和圆角；未再发现有完整 Figma 节点与线上计算样式双重证据的新问题，清单收敛为 21 项。"
+        },
+        {
+          "title": "第 13 轮 · 页面间距专项",
+          "result": "新增 3 项",
+          "note": "逐页读取 flex gap、margin、padding 与元素坐标；新增写作思路候选区到表单、右栏标题到分析列表、表单标签到输入框三项间距差异。"
+        },
+        {
+          "title": "第 14 轮 · 相邻层级交叉复核",
+          "result": "新增 1 项",
+          "note": "复核间距时同步检查相邻文本层级，确认“补充要求”表单标签同时存在字号、字重与行高偏差；其余候选卡片内部节奏与设计一致。"
+        },
+        {
+          "title": "第 15 轮 · 全页面间距回归",
+          "result": "新增 0 项",
+          "note": "再次覆盖前 5 个线上页面：病例价值页 32 / 16 / 32px 主节奏、写作要求页 8 / 16px 表单网格、确认大纲页 12 / 24px 字段节奏均匹配；问题清单收敛为 25 项。"
+        },
+        {
+          "title": "第 16 轮 · 病例正文首屏专项",
+          "result": "确认 CP-001",
+          "note": "读取“患者基本情况、主诉、病程时间轴、体格检查”计算样式，正文均为 14px / 400 / 22px；Figma 节点 188:3936 为 16px / 400 / 1.6。"
+        },
+        {
+          "title": "第 17 轮 · 病例正文全段抽查",
+          "result": "新增 0 项",
+          "note": "继续核对诊断分析、治疗经过、疗效转归和伦理声明；全部复用相同 14px / 22px 样式，Figma 复用 info 组件为 16px / 1.6，均属于既有 CP-001。"
+        },
+        {
+          "title": "第 18 轮 · 相邻层级回归",
+          "result": "新增 0 项",
+          "note": "章节标题 16px / 500 / 22px、标题到正文 12px、正文 #333333 和 Regular 400 均匹配；提示条 14px 属于正确层级，不扩大修复范围，问题清单保持 25 项。"
+        }
+      ],
+      "baseline": [
+        {
+          "name": "字体与字号",
+          "value": "PingFang SC；编辑型正文 17px / 1.6；病例解析章节正文应为 16px / 1.6，14px 仅用于提示、标签和辅助信息；标题 18–20px。"
+        },
+        {
+          "name": "字重",
+          "value": "Regular 对应 400，Medium 对应 500。大部分标题、正文、表单值和按钮分层正确；CP-021 与 CP-025 分别确认“必须补充”和“补充要求”标签误用 400，设计应为 500。"
+        },
+        {
+          "name": "颜色",
+          "value": "#7753FF 主色；#333333；#666666；#999999；#E0E0E0。"
+        },
+        {
+          "name": "间距",
+          "value": "4 / 6 / 8 / 10 / 12 / 16 / 20 / 24 / 32px；正文段落与区块以 16、24、32px 为主。CP-022–CP-024 记录了 16/32、32/16、8/16px 三组可复现偏差。"
+        },
+        {
+          "name": "线条粗细",
+          "value": "页头、页脚、侧栏及常规表单边框为 1px；病例内容区块分隔线、文献概览卡片及病例价值分析表在 Figma 中使用 0.5px 细线。"
+        },
+        {
+          "name": "线条颜色",
+          "value": "#E0E0E0 用于主边框与结构分隔；#E8E8E8 用于步骤连接等弱分隔线。"
+        },
+        {
+          "name": "圆角",
+          "value": "输入框与病例补充提示条以 8px 为主；文献概览卡片 12px、文件标签 16px；主操作按钮为 20px 胶囊圆角。"
+        },
+        {
+          "name": "审查边界",
+          "value": "截图因线上数据与设计示例不同，不比较文案、数量或业务状态；仅记录可从视觉证据确认的样式偏差。"
+        }
+      ],
+      "findings": [
+        {
+          "issueId": "CP-001",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 450–1325 / y 410–1100；中下段见 actual-review-case-lower.png",
+            "figmaNode": "188:3936,188:3948"
+          }
+        },
+        {
+          "issueId": "CP-002",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+            "coordinates": "x 455–1305 / y 420–1130"
+          }
+        },
+        {
+          "issueId": "CP-003",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          }
+        },
+        {
+          "issueId": "CP-004",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          }
+        },
+        {
+          "issueId": "CP-005",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 1505–1845 / y 290–1210"
+          }
+        },
+        {
+          "issueId": "CP-006",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+            "coordinates": "x 1075–1490 / y 440–485"
+          }
+        },
+        {
+          "issueId": "CP-007",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-confirm-outline.png",
+            "coordinates": "x 950–1490 / y 459–686"
+          }
+        },
+        {
+          "issueId": "CP-008",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          }
+        },
+        {
+          "issueId": "CP-009",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+            "coordinates": "x 510–1490 / y 350–500"
+          }
+        },
+        {
+          "issueId": "CP-010",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 420–1340 / y 300–430",
+            "figmaNode": "188:3933"
+          }
+        },
+        {
+          "issueId": "CP-011",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1880 / y 180–300",
+            "figmaNode": "188:3991"
+          }
+        },
+        {
+          "issueId": "CP-012",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1420–1890 / y 230–390",
+            "figmaNode": "188:3996,188:3997"
+          }
+        },
+        {
+          "issueId": "CP-013",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+            "coordinates": "x 400–1340 / y 400–1160",
+            "figmaNode": "188:3934"
+          }
+        },
+        {
+          "issueId": "CP-014",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 490–1850 / y 520–700",
+            "figmaNode": "188:6721"
+          }
+        },
+        {
+          "issueId": "CP-015",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1900 / y 225–390",
+            "figmaNode": "188:3996,188:3997"
+          }
+        },
+        {
+          "issueId": "CP-016",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1380–1910 / y 115–260",
+            "figmaNode": "188:3981"
+          }
+        },
+        {
+          "issueId": "CP-017",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 300–520",
+            "figmaNode": "188:3932,188:3934"
+          }
+        },
+        {
+          "issueId": "CP-018",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1900 / y 190–390",
+            "figmaNode": "188:3989,188:3995"
+          }
+        },
+        {
+          "issueId": "CP-019",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 520–720",
+            "figmaNode": "188:3937"
+          }
+        },
+        {
+          "issueId": "CP-020",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 520–720",
+            "figmaNode": "188:3937"
+          }
+        },
+        {
+          "issueId": "CP-021",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 450–1360 / y 535–700",
+            "figmaNode": "188:3941,188:3942"
+          }
+        },
+        {
+          "issueId": "CP-022",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 300–720",
+            "figmaNode": "188:3549,188:3596"
+          }
+        },
+        {
+          "issueId": "CP-023",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 1505–1845 / y 220–520",
+            "figmaNode": "188:3620,188:3627"
+          }
+        },
+        {
+          "issueId": "CP-024",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 500–760",
+            "figmaNode": "188:3597,188:3602"
+          }
+        },
+        {
+          "issueId": "CP-025",
+          "result": "新增",
+          "note": "历史记录迁移，保留原始发现与复核说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 480–620",
+            "figmaNode": "188:3599"
+          }
+        }
+      ],
+      "issueSnapshots": [
+        {
+          "id": "CP-001",
+          "pageId": "review-case",
+          "category": "字体",
+          "priority": "P1",
+          "actual": "各章节正文均为 14px / Regular 400 / 22px。",
+          "expected": "16px / Regular 400 / 1.6，约 25.6px 行高。",
+          "recommendation": "仅将病例解析章节正文调整为 16px / 25.6px，提示和辅助文字继续使用 14px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 450–1325 / y 410–1100；中下段见 actual-review-case-lower.png",
+            "figmaNode": "188:3936,188:3948"
+          },
+          "status": "待处理",
+          "title": "“病例解析结果”下方正文的字号与行高偏小",
+          "platform": "desktop",
+          "notes": [
+            "从“患者基本情况”到“患者观点与伦理声明”的正文均复用 text-sm / leading-22；同宽区域单屏容纳更多文字，阅读密度明显高于设计稿。",
+            "专项复核：Figma 首节文本节点 188:3936 与后续复用 info 组件 188:3948 均为 16px / 400 / 1.6。章节标题 16px / 500 / 22px、标题正文间距 12px、颜色 #333333 已匹配，无需联动修改。",
+            "建议：仅将病例解析章节正文从 14px / 22px 调整为 16px / 25.6px；14px 继续用于“必须补充”等提示和辅助信息，并同步回归长段换行后的区块高度。",
+            "证据坐标：actual-review-case.png · x 450–1325 / y 410–1100；actual-review-case-lower.png · 主内容长段；Figma 节点 188:3936、188:3948"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-002",
+          "pageId": "review-case",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "段落、分隔线与下一标题视觉间隔约 16px。",
+          "expected": "主要内容区块使用约 24px 的分组间隔。",
+          "recommendation": "在 section 容器层统一 24px 垂直间距",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+            "coordinates": "x 455–1305 / y 420–1130"
+          },
+          "status": "待处理",
+          "title": "正文区块之间的垂直节奏偏紧",
+          "platform": "desktop",
+          "notes": [
+            "该偏差与较小行高叠加后，使“病程时间轴、诊断分析、治疗经过”等长区块缺少清晰停顿。",
+            "建议：在 section 容器层统一 24px 垂直间距，段内维持现有紧凑值；避免在每个文本节点单独补 margin。",
+            "证据坐标：actual-review-case-lower.png · x 455–1305 / y 420–1130"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-003",
+          "pageId": "analyze-value",
+          "category": "字体",
+          "priority": "P1",
+          "actual": "原截图判断：分析结论正文约 14px / 21px。",
+          "expected": "表格正文为 16px / 约 25px。",
+          "recommendation": "复现原截图状态后决定修复或标记已忽略",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          },
+          "status": "待处理",
+          "title": "价值分析表正文排版密度过高",
+          "platform": "desktop",
+          "notes": [
+            "长句在每个单元格内显得拥挤，结论标题与解释文字的层级弱于设计稿。右侧文献面板因业务状态不同，不计入此问题。",
+            "增量复核：当前登录态样本中，主结论为 16px / 500、次级说明为 14px / 400，与 Figma 分层一致。保留原问题供前端核对截图版本、历史样式或状态分支。",
+            "建议：复现原截图状态；若仍为 14px 主结论则提升至 16px、1.6 行高，否则将此条标记为“已忽略”。",
+            "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-004",
+          "pageId": "analyze-value",
+          "category": "尺寸与对齐",
+          "priority": "P2",
+          "actual": "原截图视觉测量约 14–16px，上下文字更贴近分隔线。",
+          "expected": "原检查基准约 20px，行内容垂直居中。",
+          "recommendation": "确认设计交付版本后决定修复或标记已忽略",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          },
+          "status": "已忽略",
+          "title": "分析表单元格的纵向内边距不足",
+          "platform": "desktop",
+          "notes": [
+            "四行分析在相同内容密度下比设计稿更扁，左列标签与右列多行内容的视觉中心不够稳定。",
+            "增量复核：当前 DOM 与目标 Figma 节点均显示单元格 padding-block 为 12px。保留原问题供前端核对截图版本与当时组件实现。",
+            "建议：优先确认设计交付版本；若当前基准确认为 12px，将此条标记为“已忽略”，不要直接改为 20px。",
+            "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-005",
+          "pageId": "writing-angle",
+          "category": "字体",
+          "priority": "P1",
+          "actual": "原截图判断：侧栏说明与列表约 14px / 21px。",
+          "expected": "正文 16px / 约 26px，章节标题为 Medium。",
+          "recommendation": "复现原截图状态后决定修复或标记已解决",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 1505–1845 / y 290–1210"
+          },
+          "status": "待处理",
+          "title": "写作思路侧栏正文比设计稿更小、更紧",
+          "platform": "desktop",
+          "notes": [
+            "右侧长内容连续排列时，线上列表与段落的可扫描性明显弱于设计稿；候选卡片数量差异不作为问题。",
+            "增量复核：当前登录态样本中，章节标题为 16px / 500、正文为 16px / 400。保留原问题供前端核对历史版本或不同候选状态。",
+            "建议：复现原截图状态；若计算值已为 16px / 1.6，将此条标记为“已解决”或“已忽略”。",
+            "证据坐标：actual-writing-angle.png · x 1505–1845 / y 290–1210"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-006",
+          "pageId": "writing-requirements",
+          "category": "颜色",
+          "priority": "P2",
+          "actual": "原截图视觉判断：文字约 #B3B3B3，背景约 #F5F5F5。",
+          "expected": "禁用文字 #999999，背景 #F0F0F0。",
+          "recommendation": "核对截图版本或渲染环境后决定修复或标记已解决",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+            "coordinates": "x 1075–1490 / y 440–485"
+          },
+          "status": "待处理",
+          "title": "禁用引用样式的文字对比度偏低",
+          "platform": "desktop",
+          "notes": [
+            "“数字编号 · Vancouver”是可见配置结果，但在原截图中接近占位符灰度，识别性低于设计基准。",
+            "增量复核：当前登录态计算值为文字 #999999、背景 #F0F0F0，与 Figma 一致。保留原问题供前端核对截图版本或渲染环境。",
+            "建议：在目标浏览器复现原截图；若计算值与当前一致，将此条标记为“已解决”或“已忽略”。",
+            "证据坐标：actual-writing-requirements.png · x 1075–1490 / y 440–485"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-007",
+          "pageId": "confirm-outline",
+          "category": "字体",
+          "priority": "P1",
+          "actual": "原截图判断：写作重点正文约 14px / 21px。",
+          "expected": "编辑正文 17px / 1.6，约 27.2px。",
+          "recommendation": "复现原截图状态后决定修复或标记已解决",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-confirm-outline.png",
+            "coordinates": "x 950–1490 / y 459–686"
+          },
+          "status": "待处理",
+          "title": "大纲编辑区正文排版小于设计规范",
+          "platform": "desktop",
+          "notes": [
+            "多行写作重点在固定宽度文本框内行距偏紧，序号与正文的留白不足。设计稿中的错误提示条属于不同数据状态，不作为缺失问题。",
+            "增量复核：当前登录态 textarea 为 17px / 27.2px / 400，与 Figma 一致。保留原问题供前端核对截图版本或章节状态。",
+            "建议：复现原截图状态；若当前所有章节均为 17px / 1.6，将此条标记为“已解决”或“已忽略”。",
+            "证据坐标：actual-confirm-outline.png · x 950–1490 / y 459–686"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-008",
+          "pageId": "analyze-value",
+          "category": "线条",
+          "priority": "P2",
+          "actual": "表头底线、首列右线及行分隔线均为 1px #E0E0E0。",
+          "expected": "表格外框与单元格分隔线为 0.5px #E0E0E0。",
+          "recommendation": "仅将病例价值分析表的 grid border token 调整为 0.5px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 650–1490 / y 650–1130"
+          },
+          "status": "待处理",
+          "title": "病例价值分析表格线比设计稿更粗",
+          "platform": "desktop",
+          "notes": [
+            "线条颜色一致，但实际 1px 线在密集表格中更抢眼，弱化了标题与正文的视觉层级。",
+            "建议：仅将病例价值分析表的 grid border token 调整为 0.5px；页头、页脚、侧栏和常规表单继续保持 1px，避免全局替换。",
+            "证据坐标：actual-analyze-value.png · x 650–1490 / y 650–1130"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-009",
+          "pageId": "writing-requirements",
+          "category": "圆角",
+          "priority": "P2",
+          "actual": "写作语言、字数篇幅、摘要样式、引用样式四个表单框均为 12px。",
+          "expected": "四个 432 × 40px 表单框均为 8px。",
+          "recommendation": "将该页四个选择框的 radius token 从 12px 改为 8px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-requirements.png",
+            "coordinates": "x 510–1490 / y 350–500"
+          },
+          "status": "待处理",
+          "title": "写作要求表单框圆角大于设计值",
+          "platform": "desktop",
+          "notes": [
+            "边框粗细与颜色已匹配 1px #E0E0E0，但更大的圆角使表单视觉语言偏软，与同流程的章节标题和正文编辑框不一致。",
+            "建议：将该页四个选择框的 radius token 从 12px 改为 8px；不要修改主按钮的胶囊圆角。",
+            "证据坐标：actual-writing-requirements.png · x 510–1490 / y 350–500"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-010",
+          "pageId": "review-case",
+          "category": "字体",
+          "priority": "P2",
+          "actual": "16px / Medium 500 / 24px，颜色 #333333。",
+          "expected": "18px / Medium 500 / 25px，颜色 #333333。",
+          "recommendation": "将病例解析结果映射到 T18_bold，不改变下级章节标题",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 420–1340 / y 300–430",
+            "figmaNode": "188:3933"
+          },
+          "status": "待处理",
+          "title": "“病例解析结果”标题字号低于设计层级",
+          "platform": "desktop",
+          "notes": [
+            "字号小 2px、行高少 1px，使页面内总标题与下一级 16px 章节标题几乎没有层级差；字重与颜色本身一致。",
+            "建议：将“病例解析结果”单独映射到 T18_bold：18px / 500 / 25px，不要提升下方各章节标题。",
+            "证据坐标：actual-review-case.png · x 420–1340 / y 300–430；Figma 节点 188:3933"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-011",
+          "pageId": "review-case",
+          "category": "字体",
+          "priority": "P2",
+          "actual": "14px / Medium 500 / 22px，颜色 #333333。",
+          "expected": "16px / Medium 500 / 22px，颜色 #333333。",
+          "recommendation": "右栏文件分组标题使用 16px / 500 / 22px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1880 / y 180–300",
+            "figmaNode": "188:3991"
+          },
+          "status": "待处理",
+          "title": "右栏“病例文件”标题使用了辅助文字字号",
+          "platform": "desktop",
+          "notes": [
+            "实际标题沿用了 14px 辅助字号，虽然字重正确，但与右栏分组标题的设计层级不一致。",
+            "建议：将右栏文件分组标题改为 16px / 500 / 22px；“补充资料”等辅助操作仍保持 14px / 400。",
+            "证据坐标：actual-review-case.png · x 1390–1880 / y 180–300；Figma 节点 188:3991"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-012",
+          "pageId": "review-case",
+          "category": "字体",
+          "priority": "P2",
+          "actual": "两个可见文件标签均为 14px / 400 / 20px。",
+          "expected": "主要文件标签为 16px / 400 / 22px。",
+          "recommendation": "文件标签使用 16px 正文 token，长文件名用最大宽度和省略号适配",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1420–1890 / y 230–390",
+            "figmaNode": "188:3996,188:3997"
+          },
+          "status": "待处理",
+          "title": "病例文件标签文字比 Figma 小 2px",
+          "platform": "desktop",
+          "notes": [
+            "线上长文件名与第二个文件名都落在 14px token；Figma 中主要文件标签使用 16px，使附件识别优先级高于辅助操作。",
+            "建议：文件标签正文统一采用 16px / 400 / 22px，并通过最大宽度和省略号处理长文件名，不要通过缩小字号适配。",
+            "证据坐标：actual-review-case.png · x 1420–1890 / y 230–390；Figma 节点 188:3996、188:3997"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-013",
+          "pageId": "review-case",
+          "category": "线条",
+          "priority": "P2",
+          "actual": "各 section 底部分隔线为 1px #E0E0E0。",
+          "expected": "各 info 区块底部分隔线为 0.5px #E0E0E0。",
+          "recommendation": "仅将病例正文 section 的 border-bottom 调整为 0.5px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case-lower.png",
+            "coordinates": "x 400–1340 / y 400–1160",
+            "figmaNode": "188:3934"
+          },
+          "status": "待处理",
+          "title": "病例内容区块分隔线比设计稿更粗",
+          "platform": "desktop",
+          "notes": [
+            "颜色一致，但 1px 线在连续长正文中形成较强切割感；该差异与 CP-008 的表格细线属于不同组件，需分别修正。",
+            "建议：仅将病例正文 section 的 border-bottom 调整为 0.5px #E0E0E0；页头、页脚和左右栏结构线继续保持 1px。",
+            "证据坐标：actual-review-case-lower.png · x 400–1340 / y 400–1160；Figma 节点 188:3934"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-014",
+          "pageId": "analyze-value",
+          "category": "圆角",
+          "priority": "P2",
+          "actual": "文献计数容器计算圆角为 24px。",
+          "expected": "880 × 82px 容器圆角为 12px。",
+          "recommendation": "将相关文献概览容器切换到 12px 内容卡片圆角 token",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-analyze-value.png",
+            "coordinates": "x 490–1850 / y 520–700",
+            "figmaNode": "188:6721"
+          },
+          "status": "待处理",
+          "title": "相关文献概览卡片圆角是设计值的两倍",
+          "platform": "desktop",
+          "notes": [
+            "实际使用的 rounded-xl token 映射为 24px，使信息汇总卡片呈现接近胶囊的轮廓，与页面内 12px 内容卡片不一致。",
+            "建议：为相关文献概览容器使用明确的 12px 内容卡片圆角 token；内部三个计数按钮不单独加圆角。",
+            "证据坐标：actual-analyze-value.png · x 490–1850 / y 520–700；Figma 节点 188:6721"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-015",
+          "pageId": "review-case",
+          "category": "圆角",
+          "priority": "P2",
+          "actual": "两个文件标签均为 100px 圆角（rounded-full）。",
+          "expected": "文件标签圆角为 16px。",
+          "recommendation": "文件标签切换为 16px 标签圆角 token",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1900 / y 225–390",
+            "figmaNode": "188:3996,188:3997"
+          },
+          "status": "已忽略",
+          "title": "病例文件标签误用了全胶囊圆角",
+          "platform": "desktop",
+          "notes": [
+            "当前 34px 高标签被处理成完整胶囊，轮廓比设计稿更圆；该问题与 CP-012 的标签字号差异属于同一组件的不同样式维度。",
+            "建议：将文件标签从 rounded-full 切换为明确的 16px 标签圆角 token，保持 1px #E0E0E0 边框不变。",
+            "证据坐标：actual-review-case.png · x 1390–1900 / y 225–390；Figma 节点 188:3996、188:3997"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-016",
+          "pageId": "review-case",
+          "category": "尺寸与对齐",
+          "priority": "P2",
+          "actual": "栏头高度 45px，padding 为 20px 24px 0。",
+          "expected": "栏头高度 57px，padding 为 20px 24px 12px。",
+          "recommendation": "恢复 12px padding-bottom，使栏头固定高度回到 57px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1380–1910 / y 115–260",
+            "figmaNode": "188:3981"
+          },
+          "status": "待处理",
+          "title": "原始病例资料栏头高度少了 12px",
+          "platform": "desktop",
+          "notes": [
+            "缺少底部 12px 内边距后，文件内容区整体提前上移，导致“病例文件”紧贴栏头。",
+            "建议：给右栏 Top 恢复 12px padding-bottom，使固定栏头高度回到 57px；不要通过给下方单个标题加 margin 补偿。",
+            "证据坐标：actual-review-case.png · x 1380–1910 / y 115–260；Figma 节点 188:3981"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-017",
+          "pageId": "review-case",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "标题底部到“患者基本情况”顶部为 32px。",
+          "expected": "对应垂直间距为 20px。",
+          "recommendation": "首节取消顶部内边距，并将标题到内容列表间距统一为 20px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 300–520",
+            "figmaNode": "188:3932,188:3934"
+          },
+          "status": "待处理",
+          "title": "“病例解析结果”到首节标题的间距过大",
+          "platform": "desktop",
+          "notes": [
+            "实际由列表 margin-top 16px 与首个 section padding-top 16px 叠加而成；在标题本身偏小的情况下，额外留白进一步削弱了层级关联。",
+            "建议：首节取消顶部内边距，并将标题到内容列表的间距统一为 20px；section 保留 20px 底部内边距。",
+            "证据坐标：actual-review-case.png · x 430–1360 / y 300–520；Figma 节点 188:3932、188:3934"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-018",
+          "pageId": "review-case",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "标题底部到首个文件标签顶部为 8px。",
+          "expected": "6px 容器间距 + 8px 内容上内边距，共 14px。",
+          "recommendation": "文件区使用 6px gap，并为标签容器恢复 8px padding-block",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 1390–1900 / y 190–390",
+            "figmaNode": "188:3989,188:3995"
+          },
+          "status": "待处理",
+          "title": "病例文件标题与首个标签距离不足",
+          "platform": "desktop",
+          "notes": [
+            "文件标签向标题挤压，与栏头高度不足叠加后，右栏上半区的纵向节奏明显比设计稿紧。",
+            "建议：文件区外层 gap 使用 6px，并为标签容器恢复 8px padding-block；同时将标签图标与文字 gap 从 6px 改为设计的 4px。",
+            "证据坐标：actual-review-case.png · x 1390–1900 / y 190–390；Figma 节点 188:3989、188:3995"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-019",
+          "pageId": "review-case",
+          "category": "圆角",
+          "priority": "P2",
+          "actual": "病例正文内提示条圆角为 12px。",
+          "expected": "提示条圆角为 8px。",
+          "recommendation": "病例信息内嵌提示条切换为 8px 常用圆角 token",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 520–720",
+            "figmaNode": "188:3937"
+          },
+          "status": "待处理",
+          "title": "“必须补充”提示条圆角大于设计值",
+          "platform": "desktop",
+          "notes": [
+            "两处可见“必须补充”提示均使用 12px，使嵌入正文的小提示条比设计稿更像独立卡片。",
+            "建议：将病例信息内嵌提示条统一切换为 8px 常用圆角 token；不影响顶部风险提示条，其当前 8px 已匹配。",
+            "证据坐标：actual-review-case.png · x 430–1360 / y 520–720；Figma 节点 188:3937"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-020",
+          "pageId": "review-case",
+          "category": "颜色",
+          "priority": "P2",
+          "actual": "背景为 #F6F7F9。",
+          "expected": "背景为 #F5F6F9。",
+          "recommendation": "提示条背景绑定到 BG_light_1，移除局部 #F6F7F9",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 430–1360 / y 520–720",
+            "figmaNode": "188:3937"
+          },
+          "status": "已忽略",
+          "title": "正文补充提示条背景色偏浅",
+          "platform": "desktop",
+          "notes": [
+            "色差较小，但这是可由计算样式和 Figma 色值直接确认的 token 偏差；两处提示条均受影响。",
+            "建议：将病例内嵌提示条背景绑定到 BG_light_1 / #F5F6F9，避免继续使用局部硬编码 #F6F7F9。",
+            "证据坐标：actual-review-case.png · x 430–1360 / y 520–720；Figma 节点 188:3937"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-021",
+          "pageId": "review-case",
+          "category": "字重",
+          "priority": "P2",
+          "actual": "“必须补充”为 14px / Regular 400 / 20px。",
+          "expected": "标签为 14px / Medium 500；后续说明保持 Regular 400。",
+          "recommendation": "仅为必须补充标签 span 增加 500 字重",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-review-case.png",
+            "coordinates": "x 450–1360 / y 535–700",
+            "figmaNode": "188:3941,188:3942"
+          },
+          "status": "待处理",
+          "title": "“必须补充”标签缺少 Medium 强调",
+          "platform": "desktop",
+          "notes": [
+            "当前标签与后续说明使用相同字重，无法形成 Figma 中“提示类别 + 具体内容”的轻量层级。",
+            "建议：仅为“必须补充”标签 span 增加 500 字重，正文继续保持 400；两者字号和行高都维持 14px / 20px。",
+            "证据坐标：actual-review-case.png · x 450–1360 / y 535–700；Figma 节点 188:3941、188:3942"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-022",
+          "pageId": "writing-angle",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "候选卡片底部到表单标签顶部为 16px。",
+          "expected": "选择区底部到表单顶部为 32px。",
+          "recommendation": "将选择区与补充要求表单改为同级区块并使用 32px gap",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 300–720",
+            "figmaNode": "188:3549,188:3596"
+          },
+          "status": "待处理",
+          "title": "候选卡片与“补充要求”表单距离不足",
+          "platform": "desktop",
+          "notes": [
+            "线上将表单直接作为候选网格后的 16px margin 项，导致两个独立任务区块被压成同一组；候选数量差异不影响这项容器级间距判断。",
+            "建议：将“选择写作思路”和“补充要求”拆成两个同级区块，由页面容器统一使用 32px gap；选择区内部标题到卡片继续保持 16px。",
+            "证据坐标：actual-writing-angle.png · x 400–1420 / y 300–720；Figma 节点 188:3549、188:3596"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-023",
+          "pageId": "writing-angle",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "选中标题底部到“核心临床问题”顶部为 32px。",
+          "expected": "头部信息框底部到分析列表顶部为 16px。",
+          "recommendation": "将右栏头部信息与 list 的外层 gap 从 32px 改为 16px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 1505–1845 / y 220–520",
+            "figmaNode": "188:3620,188:3627"
+          },
+          "status": "待处理",
+          "title": "右栏选中标题与分析列表间距过大",
+          "platform": "desktop",
+          "notes": [
+            "线上右栏内容容器使用 32px gap，标题与第一节被拉开；列表内部标题到正文 6px、各分析区块 24px 的节奏均已匹配设计。",
+            "建议：将右栏“头部信息 + list”的外层 gap 从 32px 调整为 16px，不修改 list 内部的 6px 与 24px 间距。",
+            "证据坐标：actual-writing-angle.png · x 1505–1845 / y 220–520；Figma 节点 188:3620、188:3627"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-024",
+          "pageId": "writing-angle",
+          "category": "间距",
+          "priority": "P2",
+          "actual": "标签底部到 100px 高输入框顶部为 8px。",
+          "expected": "Label 底部到 content 顶部为 16px。",
+          "recommendation": "将表单 label-content gap 从 8px 改为 16px",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 500–760",
+            "figmaNode": "188:3597,188:3602"
+          },
+          "status": "待处理",
+          "title": "“补充要求”标签与输入框距离不足",
+          "platform": "desktop",
+          "notes": [
+            "表单外层当前使用 gap-8，使标签与输入框粘连；输入框自身 8px 圆角、12px × 8px 内边距均与 Figma 一致。",
+            "建议：将该表单的 label-content gap 从 8px 改为 16px，并保留输入框内部 padding 和 100px 高度。",
+            "证据坐标：actual-writing-angle.png · x 400–1420 / y 500–760；Figma 节点 188:3597、188:3602"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        },
+        {
+          "id": "CP-025",
+          "pageId": "writing-angle",
+          "category": "字体",
+          "priority": "P2",
+          "actual": "14px / Regular 400 / 22px。",
+          "expected": "18px / Medium 500 / 28.8px。",
+          "recommendation": "标签切换到 18px / 500 / 1.6 的区块标题 token",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-writing-angle.png",
+            "coordinates": "x 400–1420 / y 480–620",
+            "figmaNode": "188:3599"
+          },
+          "status": "待处理",
+          "title": "“补充要求”表单标签的字号和字重偏低",
+          "platform": "desktop",
+          "notes": [
+            "该标签被实现成辅助说明文字，弱于同页“选择写作思路”的区块标题层级；这也使 CP-024 的 8px 间距在视觉上显得更拥挤。",
+            "建议：将“补充要求”标签切换到 18px / 500 / 1.6 的区块标题 token；不要影响输入框内 17px / 400 / 24px 的编辑文字。",
+            "证据坐标：actual-writing-angle.png · x 400–1420 / y 480–620；Figma 节点 188:3599"
+          ],
+          "runIds": [
+            "cp-20261020-initial"
+          ],
+          "history": []
+        }
+      ],
+      "snapshotAt": "2026-10-21T02:25:57.639Z",
+      "deletedAt": null
+    },
+    {
+      "id": "cp-20261021-source-remaining",
+      "name": "病例报告后3步 · 代码与设计对照（待补运行态）",
+      "date": "2026-10-21",
+      "type": "新功能增量",
+      "scope": "准备正文文献、撰写并检查全文、导出投稿材料；源码master e91cb4e5，结合当前病例运行页。历史前5步不在本次回归范围。",
+      "coverage": {
+        "desktop": "3步源码与1680px设计已对照；2步取得实际截图及保存DOM/CSS，1680×1000静态重放测量；导出仅源码检查。",
+        "mobile": "未提供或发现对应移动稿；本次未操作产品移动断点，3步响应式均待复核。报告网页390×844适配验证不等于产品移动端验收。"
+      },
+      "conclusion": "增量验收：新增11条（9条实际页面/DOM-CSS差异，2条导出源码差异）；原25条及状态完整保留。本次第3轮对已取得的桌面证据无新增，不代表全流程验收通过。导出运行态、产品移动端及部署版本对应关系待补。",
+      "pages": [
+        {
+          "id": "prepare-literature",
+          "name": "准备正文文献",
+          "platform": "desktop",
+          "status": "已复核",
+          "figmaNode": "194:24459",
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/figma-prepare-literature.png",
+              "label": "Figma当前PC基准 · 194:24459 / 1680×951"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-native.png",
+              "label": "实际页面 · 文献列表原生截图（含浏览器栏）"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+              "label": "实际页面 · 展开解读"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/replay-literature-1680.png",
+              "label": "保存DOM/CSS的1680px静态重放 · 非实时在线截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/source-version-matrix.svg",
+              "label": "源码版本矩阵 · 旧表格与当前列表的差异"
+            }
+          ],
+          "notes": [
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "当前Figma旧188:*节点已失效，改用病例报告优化-PC的194:24459。实际项目3174/342；仅只读导航与展开，不点击确认。",
+            "通过项：列表标题及文献标题16/500/22，英文12/400/17，元数据与操作13/400/18；解读正文14/400/22.4/#666，标题14/500/20；统计卡圆角12、边线声明0.5px/#e0。",
+            "间距与形状：统计卡到列表32px，列表标题到首项20px，详情外边距及圆角12px匹配；说明正文缩进16→18px记CP-034。",
+            "master仍是旧表格，不能用其中17px表头当成当前列表的字号问题；详情共享组件代码可对应当前DOM。"
+          ]
+        },
+        {
+          "id": "write-check",
+          "name": "撰写并检查全文",
+          "platform": "desktop",
+          "status": "已复核",
+          "figmaNode": "194:22216",
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/figma-write-check.png",
+              "label": "Figma当前PC基准 · 194:22216 / 1680×1883"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+              "label": "实际页面 · 摘要及风险详情"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-write-middle-native.png",
+              "label": "实际页面 · 正文中段"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-write-conclusion-native.png",
+              "label": "实际页面 · 结论及参考文献"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-write-tail-native.png",
+              "label": "实际页面 · 参考文献尾部"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+              "label": "保存DOM/CSS的1680px静态重放 · 非实时在线截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/source-version-matrix.svg",
+              "label": "源码/运行版差异及定位"
+            }
+          ],
+          "notes": [
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "实际原生截图1862×1251含浏览器栏；内容区约1862×1130，未修改原Chrome视口/设备栏。精确横向尺寸取1680静态重放，不能称为1680线上截图。",
+            "通过项：大标题23/500/36.8；H2为20/500/32；正文首中尾17/400/27.2/#333、段间20；右栏标题18/500/25，风险标题20/500/28、详情标题14/500/20与正文14/400/22.4/#666。",
+            "目录标题到列表20、列表行距12，选中主色#7753ff；右栏380px、分隔线作者声明0.5px/#e0；忽略按钮高28、边框1/#ccc、有效胶囊半径14均匹配。",
+            "边线检查排除了DPR1舍入造成的假阳性；rounded-full的100px计算值最终钳制为14px，与设计胶囊轮廓一致，不登记为圆角缺陷。",
+            "新增CP-026–033；详情缩进同源于CP-034。该病例未有与设计一致的图片内容，图片工具浮层/替换状态未覆盖，不据此判定通过。"
+          ]
+        },
+        {
+          "id": "export-materials",
+          "name": "导出投稿材料",
+          "platform": "desktop",
+          "status": "代码已检查，实际页面待复核",
+          "figmaNode": "194:22088",
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/figma-export-materials.png",
+              "label": "Figma当前PC基准 · 194:22088 / 1680×878"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+              "label": "源码证据 · 仅源码确认，非实际页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+              "label": "实际流程证据 · 左侧导出步骤禁用、未开始"
+            }
+          ],
+          "notes": [
+            "当前病例导出为未开始且导航禁用。遵循验收规则，没有点击导出、生成或确认来解锁，也未伪造导出结果截图。",
+            "源码调用链：CaseReportStepViews.jsx ExportMaterialsStep → ExportFileList；compact默认false，桌面variant传入，确认CP-035与CP-036的分支适用。",
+            "源码通过项：文件名16/500/24/#333、说明14/400/normal/#999、文本gap8、图标48/内图32、行内gap12/pb20；Button medium高32/宽96/字14/500/20与设计匹配。此为静态声明对照，未验证真实渲染、禁用态与交互状态。",
+            "源码圆角24→12、分隔线1→0.5两项新增为待处理，标题明确源码待运行复核；仓库与部署版有差异，实际开启后需重新确认是否复现。"
+          ]
+        },
+        {
+          "id": "prepare-literature",
+          "name": "准备正文文献 · 移动端",
+          "platform": "mobile",
+          "status": "待响应式复核（无对应移动设计稿）",
+          "figmaNode": "",
+          "images": [],
+          "notes": [
+            "未取得对应移动设计稿。本次仅检查桌面及源码，未执行产品390×844视口运行检查；不把PC尺寸作为移动端规范，不虚构移动端问题。"
+          ]
+        },
+        {
+          "id": "write-check",
+          "name": "撰写并检查全文 · 移动端",
+          "platform": "mobile",
+          "status": "待响应式复核（无对应移动设计稿）",
+          "figmaNode": "",
+          "images": [],
+          "notes": [
+            "未取得对应移动设计稿。本次仅检查桌面及源码，未执行产品390×844视口运行检查；不把PC尺寸作为移动端规范，不虚构移动端问题。"
+          ]
+        },
+        {
+          "id": "export-materials",
+          "name": "导出投稿材料 · 移动端",
+          "platform": "mobile",
+          "status": "待响应式复核（无对应移动设计稿）",
+          "figmaNode": "",
+          "images": [],
+          "notes": [
+            "未取得对应移动设计稿。本次仅检查桌面及源码，未执行产品390×844视口运行检查；不把PC尺寸作为移动端规范，不虚构移动端问题。"
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "title": "第1轮 · 结构、分支与版本核对",
+          "result": "3步源码映射完成；2步实际可访问，1步禁用",
+          "note": "读取master归档与当前Figma节点，识别旧188节点已删除、master文献旧表格与当前列表的差异；定位导出默认分支的圆角与线宽2项源码差异。未操作产品数据。",
+          "newIssues": 2
+        },
+        {
+          "title": "第2轮 · 参数与像素细查",
+          "result": "新增9条实际页面/DOM-CSS差异",
+          "note": "检查字体、字号、400/500字重、行高、颜色、间距、尺寸对齐、线条与圆角；原生截图结合保存DOM/CSS的1680px静态重放测量。确认全文间距/正文宽度、风险建议行高与详情外观；合并共享缩进根因。",
+          "newIssues": 9
+        },
+        {
+          "title": "第3轮 · 桌面已取证范围完整复核",
+          "result": "已取得证据内无新增；整体验收仍有待复核项",
+          "note": "重读全文首中尾段、所有H2与7条风险建议、文献首尾列表和展开详情，并再次对照导出源码及设计。排除字号字重正确项、胶囊钳制与0.5px舍入假阳性。导出运行态、移动端和图片工具状态尚缺证据，不声称全流程收敛。",
+          "newIssues": 0
+        }
+      ],
+      "baseline": [
+        {
+          "name": "源码身份与接入方式",
+          "value": "GitLab f2e/tod/clinic-paper，master @ e91cb4e5，release0.0.120；通过已有登录态取得源码归档并只读分析。不是持续Git克隆，未设置永久凭据。"
+        },
+        {
+          "name": "当前Figma映射",
+          "value": "病例报告优化-PC 194:21885；文献194:24459、全文194:22216、导出194:22088，宽1680。历史首批映射和截图不改写。"
+        },
+        {
+          "name": "当前运行样式身份",
+          "value": "paperId3174 / flowId342；JS index-BwsaOZ8R.js、CSS index-D0WTVDgI.css。归档master与当前运行版本未建立同一commit对应关系。"
+        },
+        {
+          "name": "全文源码与设计的差异（部署分支待确认）",
+          "value": "CaseReportStepViews.jsx L2907/2912–2914：源码H2 19px/500/1.6、正文17px/1.7/段间12px、大标题下16px；设计20px/500/32、正文17px/1.6/段间20px、大标题下20px。当前页面这些参数已与设计匹配，因此单列版本核对，不作为当前线上字体缺陷重复登记。"
+        },
+        {
+          "name": "文本字号与字重抽查",
+          "value": "文献标题16/500、英文12/400、元信息13/400、解读标题14/500及正文14/400；全文大标题23/500、章节20/500、正文17/400；风险标题20/500及说明17/400。字号/字重匹配；风险建议行高差异见CP-029。"
+        },
+        {
+          "name": "字体族验证限制",
+          "value": "设计PingFang SC Regular/Medium；页面系统字体栈包含PingFang SC，计算字重400/500。未取得逐字形实际字体加载证明，不将字体栈等同于已验证全部字体文件。"
+        },
+        {
+          "name": "线条与颜色",
+          "value": "重点比较#333/#666/#999、#7753ff、#f5f6f9、#faf0f0、#e3443f；右栏/文献作者声明0.5px/#e0e0e0不因DPR1计算舍入为1px登记问题；导出源码显式默认1px另记CP-036。"
+        },
+        {
+          "name": "圆角token",
+          "value": "源码md8/lg12/xl24/full100；Figma风险提示8、风险标签6、风险详情12、文献详情12、导出图标12、下载胶囊16。按作用元素判断，避免全局替换token。"
+        },
+        {
+          "name": "保护历史与公开环境",
+          "value": "本次只向127.0.0.1:8767预览增量追加；CP-001–025、首批历史快照与已忽略状态均保留，不判断前5步是否修复。正式目录和数据不修改，用户确认此版本后才能发布。"
+        }
+      ],
+      "findings": [
+        {
+          "issueId": "CP-026",
+          "result": "新增",
+          "actual": "当前正文的 H2 margin-bottom 为 8px，紧接的正文无顶部 margin；摘要、引言、结论等同类章节一致。",
+          "expected": "194:22226 chapter gap 12px；H2 20px/500/32px 与正文 17px/400/27.2px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图1862×1251含浏览器栏：x421 y405 w648 h62（摘要标题及首段）；1680重放 H2底310.59、正文顶318.59，实距8px。",
+            "figmaNode": "194:22226"
+          }
+        },
+        {
+          "issueId": "CP-027",
+          "result": "新增",
+          "actual": "1680px 重放中编辑器 border-box 宽676px、padding-right:28px，正文与标题实际宽648px；目录边界之外已另外预留24px。",
+          "expected": "194:22224 main text 宽676px；194:22228 正文 min-width:100%；正文与目录间另有24px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1，非在线截图：x330 y185 w676 h735；文本右边978，编辑器右边1006。原生表现另见本页实际截图。",
+            "figmaNode": "194:22224"
+          }
+        },
+        {
+          "issueId": "CP-028",
+          "result": "新增",
+          "actual": "内容滚动区从 y153 开始，pt-32 后全文大标题从 y185 开始，顶部 padding 32px。",
+          "expected": "194:22223 内容容器 py16；正文起点与内容容器顶部之间16px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1：x330 y153 w676 h69；内容容器y153至标题框y185，相距32px。原生截图x421 y274起可见同一留白。",
+            "figmaNode": "194:22223"
+          }
+        },
+        {
+          "issueId": "CP-029",
+          "result": "新增",
+          "actual": "右侧每条处理建议为17px / 400 / line-height:1.5，即25.5px；已检查7条建议同类样式。",
+          "expected": "I194:22278;5010:24742 为17px / Regular400 / line-height:1.6，即27.2px；文字#333。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y424 w325 h125，第一条风险建议；1680重放对应x1325 y301。",
+            "figmaNode": "I194:22278;5010:24742"
+          }
+        },
+        {
+          "issueId": "CP-030",
+          "result": "新增",
+          "actual": "非成功态提示条使用 p-12，即左右各12px，上下各12px。",
+          "expected": "194:22277 风险提示条 px20 / py12，图标与文字整体应向内收8px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76，风险汇总提示条。",
+            "figmaNode": "194:22277"
+          }
+        },
+        {
+          "issueId": "CP-031",
+          "result": "新增",
+          "actual": "当前风险提示条 rounded-lg → 四角12px。",
+          "expected": "194:22277 风险提示条四角8px；背景#faf0f0。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76；检查提示条左上、右上和底角。",
+            "figmaNode": "194:22277"
+          }
+        },
+        {
+          "issueId": "CP-032",
+          "result": "新增",
+          "actual": "“必须处理”等风险标签为 rounded-[5px]，四角5px。",
+          "expected": "I194:22278;5010:24735 等级标签四角6px；文字14px/500/20px，底色#e3443f。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y354 w68 h24，“必须处理”标签。",
+            "figmaNode": "I194:22278;5010:24735"
+          }
+        },
+        {
+          "issueId": "CP-033",
+          "result": "新增",
+          "actual": "展开的风险详情使用 MobileDetailList 默认 rounded-md → 四角8px。",
+          "expected": "I194:22278;5010:24751 详情背景#f5f6f9，四角12px，px12/py16。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y602 w325 h188，“问题描述”灰底详情框。",
+            "figmaNode": "I194:22278;5010:24751"
+          }
+        },
+        {
+          "issueId": "CP-034",
+          "result": "新增",
+          "actual": "MobileDetailList 的说明段落 pl-16；文献解读和风险详情实际均为16px。",
+          "expected": "文献详情 I194:24501;7248:74039 的说明正文 pl18；风险详情 I194:22278;5010:24751;4670:82044 同为18px。",
+          "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+            "coordinates": "原生截图：x608 y551 w880 h179，展开解读卡片；1680重放x517 y430 w880 h178.56，正文相对内容左边pl16。",
+            "figmaNode": "I194:24501;7248:74039"
+          }
+        },
+        {
+          "issueId": "CP-035",
+          "result": "新增",
+          "actual": "master e91cb4e5 的桌面非compact分支 rounded-xl →24px；图标容器48×48。当前项目导出未开始，尚无实际导出结果页证据。",
+          "expected": "194:22099 文件图标容器48×48、四角12px、背景#f5f6f9。",
+          "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L32及token说明位于x52 y235至330；不是实际页面截图。",
+            "figmaNode": "194:22099"
+          }
+        },
+        {
+          "issueId": "CP-036",
+          "result": "新增",
+          "actual": "master e91cb4e5 桌面默认分支 border-b 为1px solid #e0e0e0；compact分支才显式0.5px。当前导出结果页未开放。",
+          "expected": "194:22097 文件行底部0.5px solid #e0e0e0。颜色一致，差异在声明线宽。",
+          "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L26及设计CP-036说明，x52 y180至420；不是实际页面截图。",
+            "figmaNode": "194:22097"
+          }
+        }
+      ],
+      "counts": {
+        "added": 11,
+        "fixed": 0,
+        "reopened": 0,
+        "pendingReview": 4
+      },
+      "deletedAt": null,
+      "snapshotAt": "2026-10-21T05:14:05.901Z",
+      "issueSnapshots": [
+        {
+          "id": "CP-026",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "间距",
+          "priority": "P2",
+          "title": "全文章节标题与正文之间少了 4px 间距",
+          "actual": "当前正文的 H2 margin-bottom 为 8px，紧接的正文无顶部 margin；摘要、引言、结论等同类章节一致。",
+          "expected": "194:22226 chapter gap 12px；H2 20px/500/32px 与正文 17px/400/27.2px。",
+          "recommendation": "将当前部署分支全文编辑器的 H2→正文间距从 8px 调为 12px；限定全文样式，保留章节间 20px，并回归首、中、尾段。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图1862×1251含浏览器栏：x421 y405 w648 h62（摘要标题及首段）；1680重放 H2底310.59、正文顶318.59，实距8px。",
+            "figmaNode": "194:22226"
+          },
+          "notes": [
+            "将当前部署分支全文编辑器的 H2→正文间距从 8px 调为 12px；限定全文样式，保留章节间 20px，并回归首、中、尾段。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "当前 .streaming-content H2 类虽含 mb-md，实际样式覆盖后为 8px；master 的自定义 editorTheme 另为 mb12，须确认部署分支后修复，不要盲改旧代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-026",
+              "result": "新增",
+              "actual": "当前正文的 H2 margin-bottom 为 8px，紧接的正文无顶部 margin；摘要、引言、结论等同类章节一致。",
+              "expected": "194:22226 chapter gap 12px；H2 20px/500/32px 与正文 17px/400/27.2px。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图1862×1251含浏览器栏：x421 y405 w648 h62（摘要标题及首段）；1680重放 H2底310.59、正文顶318.59，实距8px。",
+                "figmaNode": "194:22226"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-027",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P2",
+          "title": "全文编辑器额外右内边距使正文可用宽度少了 28px",
+          "actual": "1680px 重放中编辑器 border-box 宽676px、padding-right:28px，正文与标题实际宽648px；目录边界之外已另外预留24px。",
+          "expected": "194:22224 main text 宽676px；194:22228 正文 min-width:100%；正文与目录间另有24px。",
+          "recommendation": "在病例全文布局中把选择/改写操作的28px槽位移到676px正文区域外，或以不占流的定位承载；保持正文676px与目录24px间距，不能全局删 pr-28。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1，非在线截图：x330 y185 w676 h735；文本右边978，编辑器右边1006。原生表现另见本页实际截图。",
+            "figmaNode": "194:22224"
+          },
+          "notes": [
+            "在病例全文布局中把选择/改写操作的28px槽位移到676px正文区域外，或以不占流的定位承载；保持正文676px与目录24px间距，不能全局删 pr-28。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/common/LexicalStreamingText/index.tsx L452–453，showDesktopSelectionGutter 为 true 时追加 pr-28；有操作槽位的用途，修改时须保留改写入口。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-027",
+              "result": "新增",
+              "actual": "1680px 重放中编辑器 border-box 宽676px、padding-right:28px，正文与标题实际宽648px；目录边界之外已另外预留24px。",
+              "expected": "194:22224 main text 宽676px；194:22228 正文 min-width:100%；正文与目录间另有24px。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+                "coordinates": "静态DOM/CSS重放1680×1000/DPR1，非在线截图：x330 y185 w676 h735；文本右边978，编辑器右边1006。原生表现另见本页实际截图。",
+                "figmaNode": "194:22224"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-028",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "间距",
+          "priority": "P2",
+          "title": "全文内容区的顶部留白比设计多 16px",
+          "actual": "内容滚动区从 y153 开始，pt-32 后全文大标题从 y185 开始，顶部 padding 32px。",
+          "expected": "194:22223 内容容器 py16；正文起点与内容容器顶部之间16px。",
+          "recommendation": "核对当前部署分支的全文滚动容器，将桌面顶部 pt-32 改为 pt-16；不要将内容差异导致的大标题换行高度计入该间距。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+            "coordinates": "静态DOM/CSS重放1680×1000/DPR1：x330 y153 w676 h69；内容容器y153至标题框y185，相距32px。原生截图x421 y274起可见同一留白。",
+            "figmaNode": "194:22223"
+          },
+          "notes": [
+            "核对当前部署分支的全文滚动容器，将桌面顶部 pt-32 改为 pt-16；不要将内容差异导致的大标题换行高度计入该间距。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "当前 DOM：scrollbar-hide ... overflow-y-auto ... pt-32；master 的全文实现结构与部署版不同，此项按部署分支定位。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-028",
+              "result": "新增",
+              "actual": "内容滚动区从 y153 开始，pt-32 后全文大标题从 y185 开始，顶部 padding 32px。",
+              "expected": "194:22223 内容容器 py16；正文起点与内容容器顶部之间16px。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/replay-write-1680.png",
+                "coordinates": "静态DOM/CSS重放1680×1000/DPR1：x330 y153 w676 h69；内容容器y153至标题框y185，相距32px。原生截图x421 y274起可见同一留白。",
+                "figmaNode": "194:22223"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-029",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "字体",
+          "priority": "P2",
+          "title": "风险处理建议的正文行高低于设计",
+          "actual": "右侧每条处理建议为17px / 400 / line-height:1.5，即25.5px；已检查7条建议同类样式。",
+          "expected": "I194:22278;5010:24742 为17px / Regular400 / line-height:1.6，即27.2px；文字#333。",
+          "recommendation": "将 MobileSubmissionCheck.jsx 桌面建议正文 leading-[1.5] 调为 leading-[1.6]；移动端如有独立规范应另设分支。字号与字重保持17px/400。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y424 w325 h125，第一条风险建议；1680重放对应x1325 y301。",
+            "figmaNode": "I194:22278;5010:24742"
+          },
+          "notes": [
+            "将 MobileSubmissionCheck.jsx 桌面建议正文 leading-[1.5] 调为 leading-[1.6]；移动端如有独立规范应另设分支。字号与字重保持17px/400。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L54–55。差值每行1.7px；不是正文小字号或字重错误。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-029",
+              "result": "新增",
+              "actual": "右侧每条处理建议为17px / 400 / line-height:1.5，即25.5px；已检查7条建议同类样式。",
+              "expected": "I194:22278;5010:24742 为17px / Regular400 / line-height:1.6，即27.2px；文字#333。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图：x1507 y424 w325 h125，第一条风险建议；1680重放对应x1325 y301。",
+                "figmaNode": "I194:22278;5010:24742"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-030",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "间距",
+          "priority": "P2",
+          "title": "投稿风险提示条左右内边距不足",
+          "actual": "非成功态提示条使用 p-12，即左右各12px，上下各12px。",
+          "expected": "194:22277 风险提示条 px20 / py12，图标与文字整体应向内收8px。",
+          "recommendation": "将 MobileSubmissionCheck.jsx 桌面风险态的 p-12 拆为 px-20 py-12，保留移动分支与内部 gap8 / 标题图标间距12。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76，风险汇总提示条。",
+            "figmaNode": "194:22277"
+          },
+          "notes": [
+            "将 MobileSubmissionCheck.jsx 桌面风险态的 p-12 拆为 px-20 py-12，保留移动分支与内部 gap8 / 标题图标间距12。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L141；successDesktop 分支已有 px-20 py-12，风险态未采用。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-030",
+              "result": "新增",
+              "actual": "非成功态提示条使用 p-12，即左右各12px，上下各12px。",
+              "expected": "194:22277 风险提示条 px20 / py12，图标与文字整体应向内收8px。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图：x1507 y258 w325 h76，风险汇总提示条。",
+                "figmaNode": "194:22277"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-031",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "圆角",
+          "priority": "P2",
+          "title": "投稿风险提示条圆角多了 4px",
+          "actual": "当前风险提示条 rounded-lg → 四角12px。",
+          "expected": "194:22277 风险提示条四角8px；背景#faf0f0。",
+          "recommendation": "桌面风险态改为 rounded-md（8px），不要全局修改 rounded-lg token，以免影响设计要求12px的卡片。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y258 w325 h76；检查提示条左上、右上和底角。",
+            "figmaNode": "194:22277"
+          },
+          "notes": [
+            "桌面风险态改为 rounded-md（8px），不要全局修改 rounded-lg token，以免影响设计要求12px的卡片。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L141。颜色#faf0f0匹配，问题仅为圆角。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-031",
+              "result": "新增",
+              "actual": "当前风险提示条 rounded-lg → 四角12px。",
+              "expected": "194:22277 风险提示条四角8px；背景#faf0f0。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图：x1507 y258 w325 h76；检查提示条左上、右上和底角。",
+                "figmaNode": "194:22277"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-032",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "圆角",
+          "priority": "P2",
+          "title": "风险等级标签圆角少了 1px",
+          "actual": "“必须处理”等风险标签为 rounded-[5px]，四角5px。",
+          "expected": "I194:22278;5010:24735 等级标签四角6px；文字14px/500/20px，底色#e3443f。",
+          "recommendation": "将 MobileSubmissionCheck.jsx 风险标签 rounded-[5px] 调为 rounded-[6px]，只影响风险等级标签；不要调整文献的5px标签。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y354 w68 h24，“必须处理”标签。",
+            "figmaNode": "I194:22278;5010:24735"
+          },
+          "notes": [
+            "将 MobileSubmissionCheck.jsx 风险标签 rounded-[5px] 调为 rounded-[6px]，只影响风险等级标签；不要调整文献的5px标签。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileSubmissionCheck.jsx L39。字号、字重、标签内边距和底色已匹配，此项为轻微圆角差异。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-032",
+              "result": "新增",
+              "actual": "“必须处理”等风险标签为 rounded-[5px]，四角5px。",
+              "expected": "I194:22278;5010:24735 等级标签四角6px；文字14px/500/20px，底色#e3443f。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图：x1507 y354 w68 h24，“必须处理”标签。",
+                "figmaNode": "I194:22278;5010:24735"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-033",
+          "pageId": "write-check",
+          "platform": "desktop",
+          "category": "圆角",
+          "priority": "P2",
+          "title": "风险详情灰底卡片圆角少了 4px",
+          "actual": "展开的风险详情使用 MobileDetailList 默认 rounded-md → 四角8px。",
+          "expected": "I194:22278;5010:24751 详情背景#f5f6f9，四角12px，px12/py16。",
+          "recommendation": "在桌面风险详情调用处覆盖为 rounded-lg（12px），或为详情组件增加明确的外观参数；不要改变所有 rounded-md token。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+            "coordinates": "原生截图：x1507 y602 w325 h188，“问题描述”灰底详情框。",
+            "figmaNode": "I194:22278;5010:24751"
+          },
+          "notes": [
+            "在桌面风险详情调用处覆盖为 rounded-lg（12px），或为详情组件增加明确的外观参数；不要改变所有 rounded-md token。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileDetailList.jsx L6。文献解读已用 !rounded-lg 覆盖为12px，风险详情缺少相同的指定。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-033",
+              "result": "新增",
+              "actual": "展开的风险详情使用 MobileDetailList 默认 rounded-md → 四角8px。",
+              "expected": "I194:22278;5010:24751 详情背景#f5f6f9，四角12px，px12/py16。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-write-native.png",
+                "coordinates": "原生截图：x1507 y602 w325 h188，“问题描述”灰底详情框。",
+                "figmaNode": "I194:22278;5010:24751"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-034",
+          "pageId": "prepare-literature",
+          "platform": "desktop",
+          "category": "间距",
+          "priority": "P2",
+          "title": "解读与风险详情正文的左缩进少了 2px",
+          "actual": "MobileDetailList 的说明段落 pl-16；文献解读和风险详情实际均为16px。",
+          "expected": "文献详情 I194:24501;7248:74039 的说明正文 pl18；风险详情 I194:22278;5010:24751;4670:82044 同为18px。",
+          "recommendation": "为这两处桌面详情正文设 pl-18，保留外层文献左12/右20、风险左右12的差异；移动端按独立规范复核。共享根因只登记一次。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+            "coordinates": "原生截图：x608 y551 w880 h179，展开解读卡片；1680重放x517 y430 w880 h178.56，正文相对内容左边pl16。",
+            "figmaNode": "I194:24501;7248:74039"
+          },
+          "notes": [
+            "为这两处桌面详情正文设 pl-18，保留外层文献左12/右20、风险左右12的差异；移动端按独立规范复核。共享根因只登记一次。",
+            "参数来源：已登录 Chrome 保存的实际 DOM 与原始 CSS，在隔离环境按 1680×1000、DPR 1 静态重放读取计算样式；不是实时在线 getComputedStyle。原生截图用于核实实际页面表现。",
+            "源码：src/components/business/PaperCreate/MobileDetailList.jsx L15。正文14px/400/22.4px、#666均匹配；本项同时关联全文风险详情，不另建重复问题。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-034",
+              "result": "新增",
+              "actual": "MobileDetailList 的说明段落 pl-16；文献解读和风险详情实际均为16px。",
+              "expected": "文献详情 I194:24501;7248:74039 的说明正文 pl18；风险详情 I194:22278;5010:24751;4670:82044 同为18px。",
+              "note": "实际截图及保存DOM/CSS证据复核通过，定位与建议见问题说明。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/actual-literature-expanded-native.png",
+                "coordinates": "原生截图：x608 y551 w880 h179，展开解读卡片；1680重放x517 y430 w880 h178.56，正文相对内容左边pl16。",
+                "figmaNode": "I194:24501;7248:74039"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-035",
+          "pageId": "export-materials",
+          "platform": "desktop",
+          "category": "圆角",
+          "priority": "P2",
+          "title": "【源码待运行复核】导出文件图标容器圆角为设计的两倍",
+          "actual": "master e91cb4e5 的桌面非compact分支 rounded-xl →24px；图标容器48×48。当前项目导出未开始，尚无实际导出结果页证据。",
+          "expected": "194:22099 文件图标容器48×48、四角12px、背景#f5f6f9。",
+          "recommendation": "在 ExportFileList.jsx 非compact桌面分支改用12px圆角（rounded-lg），保留48px容器与32px图标；确认部署分支后在真实导出页复核。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L32及token说明位于x52 y235至330；不是实际页面截图。",
+            "figmaNode": "194:22099"
+          },
+          "notes": [
+            "在 ExportFileList.jsx 非compact桌面分支改用12px圆角（rounded-lg），保留48px容器与32px图标；确认部署分支后在真实导出页复核。",
+            "证据等级：仅源码确认，当前运行态待复核；不能据此声称线上已复现。",
+            "源码：src/components/business/PaperCreate/ExportFileList.jsx L11、L32；IntelligentCaseReportFlow/CaseReportStepViews.jsx L3318–3324 未传compact。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-035",
+              "result": "新增",
+              "actual": "master e91cb4e5 的桌面非compact分支 rounded-xl →24px；图标容器48×48。当前项目导出未开始，尚无实际导出结果页证据。",
+              "expected": "194:22099 文件图标容器48×48、四角12px、背景#f5f6f9。",
+              "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+                "coordinates": "源码证据卡1440×552：L32及token说明位于x52 y235至330；不是实际页面截图。",
+                "figmaNode": "194:22099"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-036",
+          "pageId": "export-materials",
+          "platform": "desktop",
+          "category": "线条",
+          "priority": "P2",
+          "title": "【源码待运行复核】导出文件行底分隔线偏粗",
+          "actual": "master e91cb4e5 桌面默认分支 border-b 为1px solid #e0e0e0；compact分支才显式0.5px。当前导出结果页未开放。",
+          "expected": "194:22097 文件行底部0.5px solid #e0e0e0。颜色一致，差异在声明线宽。",
+          "recommendation": "将 ExportFileList.jsx 非compact桌面行底 border-b 改为显式0.5px，或复用项目 hairline 实现；只针对该分隔线，保留颜色。真实页面在相同DPR下复核。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+            "coordinates": "源码证据卡1440×552：L26及设计CP-036说明，x52 y180至420；不是实际页面截图。",
+            "figmaNode": "194:22097"
+          },
+          "notes": [
+            "将 ExportFileList.jsx 非compact桌面行底 border-b 改为显式0.5px，或复用项目 hairline 实现；只针对该分隔线，保留颜色。真实页面在相同DPR下复核。",
+            "证据等级：仅源码确认，当前运行态待复核。此项依据作者声明1px，不是把DPR1下0.5px计算为1px误判为缺陷。",
+            "源码：src/components/business/PaperCreate/ExportFileList.jsx L25–26；src/styles/index.css border-light为#e0e0e0。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-source-remaining"
+          ],
+          "history": [
+            {
+              "issueId": "CP-036",
+              "result": "新增",
+              "actual": "master e91cb4e5 桌面默认分支 border-b 为1px solid #e0e0e0；compact分支才显式0.5px。当前导出结果页未开放。",
+              "expected": "194:22097 文件行底部0.5px solid #e0e0e0。颜色一致，差异在声明线宽。",
+              "note": "仅源码确认；当前运行态待复核，不能计为已复现线上问题。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-source-remaining/source-export.svg",
+                "coordinates": "源码证据卡1440×552：L26及设计CP-036说明，x52 y180至420；不是实际页面截图。",
+                "figmaNode": "194:22097"
+              },
+              "runId": "cp-20261021-source-remaining",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cp-20261021-outline-design-update",
+      "name": "确认大纲 · 新设计与GitLab源码差异",
+      "date": "2026-10-21",
+      "type": "新功能增量",
+      "scope": "仅病例报告确认大纲PC：最新Figma 194:22133 对照GitLab feat-case @ bdffcb21；源码审查，不以线上截图判定。",
+      "coverage": {
+        "desktop": "1680×846新设计与feat-case源码；OutlineConfirm.tsx桌面成功态、编辑/只读样式分支、菜单及Footer。4轮，新增8条代码差异。",
+        "mobile": "本次用户要求GitLab代码对照PC大纲；未验收产品移动端，不将PC标签规范套用到移动端。"
+      },
+      "conclusion": "源码差异表已整理：8条新增（CP-037–CP-044），既有36条及状态保留。第4轮在本次源码范围无新增，不等于页面已修复或整体验收通过。CP-007正文源码已匹配新稿，仅追加待运行复核说明。经用户确认，已增量发布至正式服务。",
+      "codeComparison": {
+        "branch": "feat-case",
+        "commit": "bdffcb219686fc4172a80549be080ab61f38b392",
+        "figmaNode": "194:22133",
+        "rows": [
+          {
+            "id": "CP-037",
+            "category": "尺寸与对齐",
+            "priority": "P1",
+            "title": "页面缺少“病例标题”表单",
+            "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+            "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+            "recommendation": "在章节卡片上方补充病例标题表单；标题草稿绑定现有title字段，表单到卡片16px。此项只指出可见控件缺失，不验保存接口业务。",
+            "source": "OutlineConfirm.tsx L553–568；原值读取294",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L553"
+          },
+          {
+            "id": "CP-038",
+            "category": "尺寸与对齐",
+            "priority": "P1",
+            "title": "章节区缺少外层细边框圆角卡片与内边距",
+            "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+            "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+            "recommendation": "为双栏外层补充12px圆角、#e0e0e0细线和20px水平内边距；保留左栏280px及右栏pl40。复用项目hairline-box/hairline-radius-lg并按DPR复核，不全局改边框。",
+            "source": "OutlineConfirm.tsx L376–377、455、562–566",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L563"
+          },
+          {
+            "id": "CP-039",
+            "category": "字体",
+            "priority": "P2",
+            "title": "3个表单标签字号、字重和颜色偏重",
+            "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+            "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+            "recommendation": "仅这3个桌面标签改为text-sm font-normal text-text-secondary，保留leading-22。显式font-normal覆盖全局h3默认500；章节菜单选中项仍保留16px/500。",
+            "source": "OutlineConfirm.tsx L378、458、474",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L378"
+          },
+          {
+            "id": "CP-040",
+            "category": "间距",
+            "priority": "P2",
+            "title": "右侧标签和表单分组间距偏大",
+            "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+            "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+            "recommendation": "右侧最外层gap24→16，标题组gap12→8；重点区增加“标签+编辑框”的gap8子组，外层继续gap12分隔补充提示，避免把所有gap12统一替换。",
+            "source": "OutlineConfirm.tsx L455–456、473–480",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L455"
+          },
+          {
+            "id": "CP-041",
+            "category": "尺寸与对齐",
+            "priority": "P2",
+            "title": "章序/预计字数未右对齐",
+            "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+            "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+            "recommendation": "标题行占满右栏宽度并justify-between；保留辅助信息14px/#999，必要时增加shrink-0，避免与标签挤压。",
+            "source": "OutlineConfirm.tsx L457–461",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L457"
+          },
+          {
+            "id": "CP-042",
+            "category": "尺寸与对齐",
+            "priority": "P1",
+            "title": "“必须补充”提示应分两行而非横排",
+            "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+            "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+            "recommendation": "内部改成两行：保留红点与标签的gap12，说明另起一行并pl20，行间gap2。保留外层背景#f5f6f9、padding16/12和8px圆角。",
+            "source": "OutlineConfirm.tsx L481–487",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L481"
+          },
+          {
+            "id": "CP-043",
+            "category": "颜色",
+            "priority": "P2",
+            "title": "补充提示说明文字颜色偏深",
+            "actual": "L486说明段落text-text-primary，即#333333。",
+            "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+            "recommendation": "仅提示说明段落改用text-text-secondary；保留标题、红点与背景色。",
+            "source": "OutlineConfirm.tsx L484–486；token index.css:17–18",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L486"
+          },
+          {
+            "id": "CP-044",
+            "category": "尺寸与对齐",
+            "priority": "P2",
+            "title": "底部操作内容行少了4px高度",
+            "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+            "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+            "recommendation": "底部880px内容行设置min-h44并保持items-center；保留40px按钮、pt12/pb24。边线是否占盒模型高度需运行时核对，不在源码表中推断最终总高差值。",
+            "source": "OutlineConfirm.tsx L546–550、588–590；Button/index.tsx:31",
+            "sourceUrl": "https://gitlab.dxy.net/f2e/tod/clinic-paper/-/blob/bdffcb219686fc4172a80549be080ab61f38b392/src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx#L589"
+          }
+        ]
+      },
+      "rounds": [
+        {
+          "title": "第1轮 · 分支与结构核对",
+          "result": "确认feat-case；新增2处结构差异",
+          "newIssues": 2,
+          "note": "通过GitLab分支页核对feat-case提交bdffcb21，取得归档并追踪index.tsx到OutlineConfirm.tsx。与新Frame 194:22133核对标题表单和双栏外壳；不把旧master的纵向列表作为本次代码结论。"
+        },
+        {
+          "title": "第2轮 · 样式参数逐项比对",
+          "result": "新增5处字体、间距、对齐和提示样式差异",
+          "newIssues": 5,
+          "note": "逐读章节规划、章节编辑和提示的字号/400–500字重/行高/颜色/gap/padding/边框/圆角；追踪Input和主题token，确认正文17px/400/1.6与输入8px圆角已匹配。"
+        },
+        {
+          "title": "第3轮 · 共享组件与Footer复核",
+          "result": "新增1处内容行高度差异",
+          "newIssues": 1,
+          "note": "追踪Button large高40px，对照Figma footer元数据的44px内容行。重新核对hairline按DPR缩放、圆角钳制、删除二次确认。未将普通只读灰底或后端字数缺省当成样式问题。"
+        },
+        {
+          "title": "第4轮 · 本次源码范围完整复核",
+          "result": "无新增；源码对照收敛",
+          "newIssues": 0,
+          "note": "回看完整桌面return树、3个标签、输入及写作重点首中尾渲染规则、补充提示、菜单普通/选中/hover声明和Footer。8项未与历史问题重复；未执行线上修复验收或产品移动端验收。"
+        }
+      ],
+      "pages": [
+        {
+          "id": "confirm-outline",
+          "name": "确认大纲",
+          "platform": "desktop",
+          "status": "源码已对照（未做运行验收）",
+          "figmaNode": "194:22133",
+          "images": [
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/figma-outline-current.png",
+              "label": "最新Figma · 194:22133 / 1680×846"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+              "label": "CP-037 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+              "label": "CP-038 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+              "label": "CP-039 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+              "label": "CP-040 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+              "label": "CP-041 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+              "label": "CP-042 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+              "label": "CP-043 · GitLab源码证据，非页面截图"
+            },
+            {
+              "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+              "label": "CP-044 · GitLab源码证据，非页面截图"
+            }
+          ],
+          "notes": [
+            "用户明确要求与GitLab代码对比。取feat-case分支最新提交bdffcb219686fc4172a80549be080ab61f38b392（2026-10-21 10:28:54）；master仍为e91cb4e5。本批次不用旧master或当前网页替代此分支。",
+            "来源为GitLab已登录界面下载的分支源码归档；未新建凭据、未推送提交。数据字段内容、章节数量与业务逻辑不评价。",
+            "匹配项：页头14/400/20与20/500/28；菜单普通16/400/22、选中16/500/22、#7753ff/#f3f0fc、8px圆角与红点8px；输入17/400/1.6、高40/圆角8/边框1px #e0e0e0；重点正文17/400/1.6；提示标题14/500、背景#f5f6f9、圆角8、padding16/12；增删24px圆形按钮/18px图标和12px间距；删除二次确认已存在。",
+            "字体栈和图标glyph未做运行渲染验证；新增图标使用icon-dui_page_add，设计为dui_add，仅名称不同不足以判错，列为待视觉核对。hairline分隔线按DPR缩放，不因声明1px误报。",
+            "未伪造产品实际截图。本批次图片是Figma基准和标识清楚的源码证据卡。新增问题保留待处理状态；不自动关闭历史问题。"
+          ]
+        }
+      ],
+      "baseline": [
+        {
+          "name": "源码版本",
+          "value": "GitLab feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/.../steps/OutlineConfirm.tsx；主题src/styles/index.css（spacing1px、md8/lg12）。"
+        },
+        {
+          "name": "新设计",
+          "value": "病例报告优化-PC / 确认大纲 194:22133；1680×846；最新节点参数和截图均重新读取。"
+        },
+        {
+          "name": "一致项与例外",
+          "value": "正文17px/400/1.6已匹配；仅源码不能确认CP-007运行修复。只读输入灰底属于状态区别；字数缺省属于数据区别，均不作为样式问题。"
+        }
+      ],
+      "findings": [
+        {
+          "issueId": "CP-037",
+          "result": "新增",
+          "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+          "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x520 y184 w880 h70；源码返回树L553–568。",
+            "figmaNode": "194:22160"
+          }
+        },
+        {
+          "issueId": "CP-038",
+          "result": "新增",
+          "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+          "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+            "coordinates": "源码证据卡1440×493，x48 y128起；Figma x520 y270 w880 h398；源码L563外层声明，右侧可用宽度为静态推导。",
+            "figmaNode": "194:22173"
+          }
+        },
+        {
+          "issueId": "CP-039",
+          "result": "新增",
+          "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+          "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x540 y287、x860 y287、x860 y373；源码L378/L458/L474。",
+            "figmaNode": "194:22177,194:22193,I194:22202;6791:139258"
+          }
+        },
+        {
+          "issueId": "CP-040",
+          "result": "新增",
+          "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+          "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma标题标签底309→输入顶317为8；输入底357→下标签顶373为16；重点标签底395→编辑顶403为8。",
+            "figmaNode": "194:22190,194:22191,194:22202"
+          }
+        },
+        {
+          "issueId": "CP-041",
+          "result": "新增",
+          "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+          "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x860 y287 w519 h22，辅助信息右边界x1379；源码L457 gap12。",
+            "figmaNode": "194:22192,194:22194"
+          }
+        },
+        {
+          "issueId": "CP-042",
+          "result": "新增",
+          "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+          "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma x860 y565 w519 h86，说明从x896第二行起；源码L481–486横向flex。",
+            "figmaNode": "194:22203,194:22204,194:22208"
+          }
+        },
+        {
+          "issueId": "CP-043",
+          "result": "新增",
+          "actual": "L486说明段落text-text-primary，即#333333。",
+          "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x896 y600 w483 h40；源码L486和src/styles/index.css L17–18。",
+            "figmaNode": "194:22209"
+          }
+        },
+        {
+          "issueId": "CP-044",
+          "result": "新增",
+          "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+          "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+          "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+            "coordinates": "源码证据卡1440×464，x48 y128起；Figma footer x520 y778 w880 h44；按钮y780 h40；源码L589内容行与Button large声明。",
+            "figmaNode": "I194:22215;6960:55463"
+          }
+        },
+        {
+          "issueId": "CP-007",
+          "result": "待复核",
+          "actual": "feat-case OutlineConfirm.tsx L165、181–183：桌面重点正文text-[17px] leading-[1.6]，默认400。",
+          "expected": "新稿I194:22202;6948:34927为17px/400/1.6，即27.2px。",
+          "note": "本次源码声明已匹配新设计，不新增正文偏小问题；用户要求源码对比，未做目标编辑状态运行验收，因此保留CP-007原描述、原图和处理状态。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-007-source.svg",
+            "coordinates": "1440×290源码证据卡：x40 y93–237；非实际页面截图。",
+            "figmaNode": "I194:22202;6948:34927"
+          }
+        }
+      ],
+      "counts": {
+        "added": 8,
+        "fixed": 0,
+        "reopened": 0,
+        "pendingReview": 2
+      },
+      "deletedAt": null,
+      "snapshotAt": "2026-10-21T05:14:05.978Z",
+      "issueSnapshots": [
+        {
+          "id": "CP-007",
+          "pageId": "confirm-outline",
+          "category": "字体",
+          "priority": "P1",
+          "actual": "原截图判断：写作重点正文约 14px / 21px。",
+          "expected": "编辑正文 17px / 1.6，约 27.2px。",
+          "recommendation": "复现原截图状态后决定修复或标记已解决",
+          "evidence": {
+            "asset": "assets/runs/cp-20261020-initial/actual-confirm-outline.png",
+            "coordinates": "x 950–1490 / y 459–686"
+          },
+          "status": "待处理",
+          "title": "大纲编辑区正文排版小于设计规范",
+          "platform": "desktop",
+          "notes": [
+            "多行写作重点在固定宽度文本框内行距偏紧，序号与正文的留白不足。设计稿中的错误提示条属于不同数据状态，不作为缺失问题。",
+            "增量复核：当前登录态 textarea 为 17px / 27.2px / 400，与 Figma 一致。保留原问题供前端核对截图版本或章节状态。",
+            "建议：复现原截图状态；若当前所有章节均为 17px / 1.6，将此条标记为“已解决”或“已忽略”。",
+            "证据坐标：actual-confirm-outline.png · x 950–1490 / y 459–686"
+          ],
+          "runIds": [
+            "cp-20261020-initial",
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-007",
+              "result": "待复核",
+              "actual": "feat-case OutlineConfirm.tsx L165、181–183：桌面重点正文text-[17px] leading-[1.6]，默认400。",
+              "expected": "新稿I194:22202;6948:34927为17px/400/1.6，即27.2px。",
+              "note": "本次源码声明已匹配新设计，不新增正文偏小问题；用户要求源码对比，未做目标编辑状态运行验收，因此保留CP-007原描述、原图和处理状态。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-007-source.svg",
+                "coordinates": "1440×290源码证据卡：x40 y93–237；非实际页面截图。",
+                "figmaNode": "I194:22202;6948:34927"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-037",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P1",
+          "title": "【GitLab源码】页面缺少“病例标题”表单",
+          "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+          "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+          "recommendation": "在章节卡片上方补充病例标题表单；标题草稿绑定现有title字段，表单到卡片16px。此项只指出可见控件缺失，不验保存接口业务。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x520 y184 w880 h70；源码返回树L553–568。",
+            "figmaNode": "194:22160"
+          },
+          "notes": [
+            "在章节卡片上方补充病例标题表单；标题草稿绑定现有title字段，表单到卡片16px。此项只指出可见控件缺失，不验保存接口业务。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L553–568；原值读取294。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-037",
+              "result": "新增",
+              "actual": "桌面返回树直接渲染章节规划和章节编辑区，没有病例标题标签或输入框；getOutlineTitle仅在保存时取原值。",
+              "expected": "194:22160–22169：880px宽的病例标题表单；标签14px/400/22px/#666，标签到输入8px；输入40px高、圆角8px、1px #e0e0e0，正文17px/400/24px。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-037.svg",
+                "coordinates": "源码证据卡1440×435，x48 y128起；Figma x520 y184 w880 h70；源码返回树L553–568。",
+                "figmaNode": "194:22160"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-038",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P1",
+          "title": "【GitLab源码】章节区缺少外层细边框圆角卡片与内边距",
+          "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+          "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+          "recommendation": "为双栏外层补充12px圆角、#e0e0e0细线和20px水平内边距；保留左栏280px及右栏pl40。复用项目hairline-box/hairline-radius-lg并按DPR复核，不全局改边框。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+            "coordinates": "源码证据卡1440×493，x48 y128起；Figma x520 y270 w880 h398；源码L563外层声明，右侧可用宽度为静态推导。",
+            "figmaNode": "194:22173"
+          },
+          "notes": [
+            "为双栏外层补充12px圆角、#e0e0e0细线和20px水平内边距；保留左栏280px及右栏pl40。复用项目hairline-box/hairline-radius-lg并按DPR复核，不全局改边框。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L376–377、455、562–566。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-038",
+              "result": "新增",
+              "actual": "L563仅max-w-[880px] flex items-start，没有外框、圆角或左右内边距；左栏280px，右栏flex-1/pl40，右侧内容名义宽560px。",
+              "expected": "194:22173：880px卡片，0.5px solid #e0e0e0、四角12px、左右padding20px；左规划栏280px、右栏内缩40px，右侧表单实际519px。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-038.svg",
+                "coordinates": "源码证据卡1440×493，x48 y128起；Figma x520 y270 w880 h398；源码L563外层声明，右侧可用宽度为静态推导。",
+                "figmaNode": "194:22173"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-039",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "字体",
+          "priority": "P2",
+          "title": "【GitLab源码】3个表单标签字号、字重和颜色偏重",
+          "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+          "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+          "recommendation": "仅这3个桌面标签改为text-sm font-normal text-text-secondary，保留leading-22。显式font-normal覆盖全局h3默认500；章节菜单选中项仍保留16px/500。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x540 y287、x860 y287、x860 y373；源码L378/L458/L474。",
+            "figmaNode": "194:22177,194:22193,I194:22202;6791:139258"
+          },
+          "notes": [
+            "仅这3个桌面标签改为text-sm font-normal text-text-secondary，保留leading-22。显式font-normal覆盖全局h3默认500；章节菜单选中项仍保留16px/500。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L378、458、474。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-039",
+              "result": "新增",
+              "actual": "“章节规划”“章节标题”“本章写作重点”均text-base / font-medium / text-text-primary，即16px / 500 / 22px / #333。",
+              "expected": "194:22177、194:22193、I194:22202;6791:139258均14px / 400 / 22px / #666。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-039.svg",
+                "coordinates": "源码证据卡1440×522，x48 y128起；Figma x540 y287、x860 y287、x860 y373；源码L378/L458/L474。",
+                "figmaNode": "194:22177,194:22193,I194:22202;6791:139258"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-040",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "间距",
+          "priority": "P2",
+          "title": "【GitLab源码】右侧标签和表单分组间距偏大",
+          "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+          "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+          "recommendation": "右侧最外层gap24→16，标题组gap12→8；重点区增加“标签+编辑框”的gap8子组，外层继续gap12分隔补充提示，避免把所有gap12统一替换。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma标题标签底309→输入顶317为8；输入底357→下标签顶373为16；重点标签底395→编辑顶403为8。",
+            "figmaNode": "194:22190,194:22191,194:22202"
+          },
+          "notes": [
+            "右侧最外层gap24→16，标题组gap12→8；重点区增加“标签+编辑框”的gap8子组，外层继续gap12分隔补充提示，避免把所有gap12统一替换。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L455–456、473–480。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-040",
+              "result": "新增",
+              "actual": "L456标签到章节标题输入框gap12；L473写作重点标签到编辑框gap12；L455两个表单组之间gap24。",
+              "expected": "194:22191标签到输入8px；194:22202标签到重点编辑框8px；194:22190标题表单到重点表单16px。重点编辑框到补充提示仍12px。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-040.svg",
+                "coordinates": "源码证据卡1440×551，x48 y128起；Figma标题标签底309→输入顶317为8；输入底357→下标签顶373为16；重点标签底395→编辑顶403为8。",
+                "figmaNode": "194:22190,194:22191,194:22202"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-041",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P2",
+          "title": "【GitLab源码】章序/预计字数未右对齐",
+          "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+          "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+          "recommendation": "标题行占满右栏宽度并justify-between；保留辅助信息14px/#999，必要时增加shrink-0，避免与标签挤压。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+            "coordinates": "源码证据卡1440×522，x48 y128起；Figma x860 y287 w519 h22，辅助信息右边界x1379；源码L457 gap12。",
+            "figmaNode": "194:22192,194:22194"
+          },
+          "notes": [
+            "标题行占满右栏宽度并justify-between；保留辅助信息14px/#999，必要时增加shrink-0，避免与标签挤压。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L457–461。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-041",
+              "result": "新增",
+              "actual": "L457标题行flex items-center gap12，没有justify-between；章序与字数紧跟章节标题标签。",
+              "expected": "194:22192宽519px并justify-between；章节标题在左，“第2章·约700字”贴右边界，14px/400/20px/#999。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-041.svg",
+                "coordinates": "源码证据卡1440×522，x48 y128起；Figma x860 y287 w519 h22，辅助信息右边界x1379；源码L457 gap12。",
+                "figmaNode": "194:22192,194:22194"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-042",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P1",
+          "title": "【GitLab源码】“必须补充”提示应分两行而非横排",
+          "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+          "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+          "recommendation": "内部改成两行：保留红点与标签的gap12，说明另起一行并pl20，行间gap2。保留外层背景#f5f6f9、padding16/12和8px圆角。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+            "coordinates": "源码证据卡1440×551，x48 y128起；Figma x860 y565 w519 h86，说明从x896第二行起；源码L481–486横向flex。",
+            "figmaNode": "194:22203,194:22204,194:22208"
+          },
+          "notes": [
+            "内部改成两行：保留红点与标签的gap12，说明另起一行并pl20，行间gap2。保留外层背景#f5f6f9、padding16/12和8px圆角。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L481–487。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-042",
+              "result": "新增",
+              "actual": "L481–486外层flex row/gap12；红点+标签占一列，说明段落在其右侧flex-1，同一行排列。",
+              "expected": "194:22203–22208：提示内部flex-col/gap2；第一行红点8px+标签，第二行说明独占全宽并pl20；外层px16/py12/圆角8px。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-042.svg",
+                "coordinates": "源码证据卡1440×551，x48 y128起；Figma x860 y565 w519 h86，说明从x896第二行起；源码L481–486横向flex。",
+                "figmaNode": "194:22203,194:22204,194:22208"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-043",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "颜色",
+          "priority": "P2",
+          "title": "【GitLab源码】补充提示说明文字颜色偏深",
+          "actual": "L486说明段落text-text-primary，即#333333。",
+          "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+          "recommendation": "仅提示说明段落改用text-text-secondary；保留标题、红点与背景色。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+            "coordinates": "源码证据卡1440×435，x48 y128起；Figma x896 y600 w483 h40；源码L486和src/styles/index.css L17–18。",
+            "figmaNode": "194:22209"
+          },
+          "notes": [
+            "仅提示说明段落改用text-text-secondary；保留标题、红点与背景色。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L484–486；token index.css:17–18。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-043",
+              "result": "新增",
+              "actual": "L486说明段落text-text-primary，即#333333。",
+              "expected": "194:22209说明为#666666，14px/400；只有“必须补充”标签保持#333333/500。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-043.svg",
+                "coordinates": "源码证据卡1440×435，x48 y128起；Figma x896 y600 w483 h40；源码L486和src/styles/index.css L17–18。",
+                "figmaNode": "194:22209"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        },
+        {
+          "id": "CP-044",
+          "pageId": "confirm-outline",
+          "platform": "desktop",
+          "category": "尺寸与对齐",
+          "priority": "P2",
+          "title": "【GitLab源码】底部操作内容行少了4px高度",
+          "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+          "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+          "recommendation": "底部880px内容行设置min-h44并保持items-center；保留40px按钮、pt12/pb24。边线是否占盒模型高度需运行时核对，不在源码表中推断最终总高差值。",
+          "evidence": {
+            "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+            "coordinates": "源码证据卡1440×464，x48 y128起；Figma footer x520 y778 w880 h44；按钮y780 h40；源码L589内容行与Button large声明。",
+            "figmaNode": "I194:22215;6960:55463"
+          },
+          "notes": [
+            "底部880px内容行设置min-h44并保持items-center；保留40px按钮、pt12/pb24。边线是否占盒模型高度需运行时核对，不在源码表中推断最终总高差值。",
+            "证据：feat-case @ bdffcb219686fc4172a80549be080ab61f38b392；src/components/business/PaperCreate/IntelligentCaseReportFlow/steps/OutlineConfirm.tsx L546–550、588–590；Button/index.tsx:31。",
+            "本条为源码与设计参数对照，不代表已在某个线上部署复现。未更改产品代码。"
+          ],
+          "status": "待处理",
+          "runIds": [
+            "cp-20261021-outline-design-update"
+          ],
+          "history": [
+            {
+              "issueId": "CP-044",
+              "result": "新增",
+              "actual": "L589内容行没有高度或min-height，只由Button large撑到40px；Button样式为h40/py8/leading24。",
+              "expected": "I194:22215;6960:55463内容行高44px；右侧按钮高40px且垂直居中。Footer设计整体80px。",
+              "note": "GitLab feat-case源码与最新设计参数不一致；文件行号和具体建议见差异表。仅源码结论，不声称线上复现。",
+              "evidence": {
+                "asset": "assets/runs/cp-20261021-outline-design-update/cp-044.svg",
+                "coordinates": "源码证据卡1440×464，x48 y128起；Figma footer x520 y778 w880 h44；按钮y780 h40；源码L589内容行与Button large声明。",
+                "figmaNode": "I194:22215;6960:55463"
+              },
+              "runId": "cp-20261021-outline-design-update",
+              "date": "2026-10-21",
+              "previousStatus": "待处理",
+              "status": "待处理"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "ClinPaper 样式验收"
+  short_description: "复核 ClinPaper 设计还原与样式修复，追加统一验收网站历史并同步问题状态"
+  default_prompt: "使用 $clinpaper-ui-acceptance 验收本次 ClinPaper 样式修复或新功能，将证据和结论追加到现有验收网站并分享批次链接。"
+policy:
+  allow_implicit_invocation: true
