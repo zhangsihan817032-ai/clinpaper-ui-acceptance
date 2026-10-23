@@ -1,0 +1,120 @@
+# 证据与报告契约
+
+适用于共用报告站，唯一工作环境为 [projects.md](projects.md) 中的多项目预览。后续报告、证据与状态只维护该环境，旧正式站和旧 ClinPaper 预览仅作历史参考。本文件描述现有契约和取证要求，不表示新增字段已经被服务支持。提交前读取目标站当前实现、脚本帮助与校验规则；新的解析元信息优先写入已有 notes、finding.note 或补证索引，不擅自改库结构。
+
+## 每条发现保留的内容
+
+- 项目、端别、页面、组件、状态；实际发生端与实现归属，以及确认或待确认依据。
+- 当前设计 node、截图及参数；完整源码提交号、文件位置、调用/覆盖链及命中条件。
+- 声明值、推导值、运行测量值分别标识，保留原始单位和换算依据。
+- 参数差异、可见表现、已确认根因或假设、建议、优先级、复核限制。
+- 实现与设计双图、原图定位、版本环境、来源及日期；当前处理状态与复核结论分开。
+
+## 二次验收的最小增量
+
+默认以源码对照设计稿核验原问题，判定口径见主流程。沿用原编号、原始证据和历史；一次任务完成后集中写入一次最终结果，不把中间检查、补充解释或纠正文案拆成多个批次。同一源码、设计和结论重复核查无变化时，不新增批次或重复历史。
+
+问题卡片默认只保留现有标题、状态、位置、一组实际/设计差异、对照图及一条简短复核结论。通过时可写“源码已与设计一致”，未通过只写剩余差异；仅在区分依据必要时使用已有的“源码验收”标识。代码位置、资源解析、完整提交号、设备信息、限制和旧复核收进详情，不逐条重复环境说明、用户授权、检查轮次或流程解释。
+
+批次结论只写检查数量、通过数量和剩余项；公共版本及依据记录一次。复验不默认调整网站布局、增加标签/说明区/筛选项、生成额外报告网页或新增报告字段。没有用户明确要求，不为了精简而删除历史记录或原始图片。
+
+## 双图与缩略图
+
+问题列表默认展示实现侧与设计侧局部缩略图、相同编号框选，支持整页定位及原图查看。源码片段与说明折叠辅助，不用源码文字卡代替界面截图。
+
+在原 `evidence.asset / coordinates / figmaNode` 外提供 `evidence.visual`：
+
+```json
+{
+  "date": "实际取证日期",
+  "location": "页面 → 区域 → 元素",
+  "note": "图片来源、部署版本对应情况及限制",
+  "actual": {
+    "asset": "assets/runs/<runId>/implementation.png",
+    "kind": "source-render",
+    "label": "目标提交原组件 · 隔离运行",
+    "version": "完整提交号；状态与演示数据；视口、DPR；隔离范围",
+    "width": 390,
+    "height": 844,
+    "crop": [0, 0, 390, 200],
+    "regions": [{"rect": [16, 20, 100, 24], "label": "1"}]
+  },
+  "design": {
+    "asset": "assets/runs/<runId>/design.png",
+    "kind": "figma",
+    "label": "对应状态设计稿",
+    "version": "文件、node、读取日期",
+    "width": 390,
+    "height": 844,
+    "crop": [0, 0, 390, 200],
+    "regions": [{"rect": [16, 20, 100, 24], "label": "1"}]
+  }
+}
+```
+
+示例仅说明结构，不是有效取证结果；所有尺寸、坐标和资产替换为实值。crop/rect 为原图左上角坐标系的 `[x,y,width,height]`，必须在图片内，且两侧编号指向同一元素。匹配状态、内容和比例后再比较，不拉伸图片掩盖偏差。
+
+kind 仅如实使用：actual 为真实运行图；source-render 为目标提交原组件隔离渲染；dom-replay 为保存 DOM 重放；figma 为设计图。actual 字段是实现侧展示位名称，不代表其中任何图都是运行实测。
+
+真机视觉验收需要目标版本运行图；二次源码验收无需运行图。两种依据分别记录，旧图、source-render 或设计图均不能改标签冒充本次运行图。源码局部渲染只证明所述组件与环境。
+
+首次发现缺图的具体候选仍进入预览总表：issue 和 finding 设 `reviewState: "待复核"`，注明具体缺失依据，不伪造 visual.actual。二次源码验收不能仅因没有新运行图而沿用待复核结论。只有未覆盖而无具体差异的范围写在批次，不虚构问题。
+
+源码核验通过使用 `verified: true` 并明确 `verificationBasis: "source"`；它表示原问题在源码层面已与设计一致。运行验收通过另附修复版本新图，旧线上图不能证明新源码已部署。
+
+当前站点的社区 Android 源码复验已支持 `run.evidenceMode: "source-acceptance"`、`acceptanceBasis`、页面 `status: "源码已复核"`，以及 finding 的 `result: "已修复"`、`reviewState: "源码已复核"`、`verificationBasis: "source"`、`verified: true`。证据沿用已有 `evidence.source` 和 `evidence.design`，source 保留固定提交、代码定位、摘录和 resolution 生效解析。其他端写入前检查现有接口能力，不能把该实现范围外推为全部端均已支持，也不能伪造运行证据满足旧校验。
+
+## 项目、端别和状态
+
+projectId 为 community 或 clinpaper。社区平台：android、ios、harmony、web-pc、web-mobile；ClinPaper：web-pc、web-mobile。旧 desktop/mobile 仅保留兼容 ClinPaper 历史，历史快照不改写。
+
+编号按项目当前最大值顺延：社区 DXY、ClinPaper CP。projects 中登记的历史差异未核对前，分配新编号还需检查历史编号占用，避免同一编号对应不同问题；只读核对不等于向旧环境写入。一个编号对应一个端，跨端相似发现用本项目 `relatedIssueIds` 关联、独立处理状态，不重复登记历史同一问题。
+
+现有服务按 projectId + platform 派生团队，没有独立个人负责人或任意归属字段。确认 H5 根因的新问题用 web-mobile 等实际实现端，notes 记录发生的宿主端；未知归属保留观察端并注明待确认。历史通过补充说明、关联与后续批次保留沿革，不静默迁移。
+
+处理状态为待处理/已解决/已忽略。新增候选初始为待处理，复核标记独立；未覆盖或用户已忽略的问题不自动改状态。不要调用重置状态接口“恢复数据”。
+
+跨平台例外可用 `run.platformNotes` 的 `{platform,status,note,basis}`。status 为“已确认的平台差异”或“待设计确认”，确认项必须有 basis，限定日期、组件和适用范围。影响验收的待确认项同时标记页面待复核，不宣称通过。
+
+## 批次与增量接口
+
+先 `GET /api/projects` 及 `GET /api/projects/<projectId>/review` 获取配置、revision 和历史。旧 `/api/review` 等仅兼容 ClinPaper；不能据此得出社区没有问题。
+
+向 `POST /api/projects/<projectId>/runs` 提交 `{baseRevision,newIssues,run}`，单批次只属于一个项目。revision 是全库并发版本，其他项目写入也会引起冲突。
+
+| 对象 | 主要字段与约束 |
+| --- | --- |
+| run | id、projectId、name、date、type、scope、coverage、conclusion、pages、rounds、baseline、findings |
+| type | 首次验收 / 修复回归 / 新功能增量 / 全流程验收 |
+| coverage | 按平台键说明实查范围；pages 中每个平台都有对应说明，其他端为本次未覆盖 |
+| pages | id、name、platform、status、images；可含 figmaNode、notes，页面端别独立 |
+| newIssues | id、pageId、platform、category、priority、title、actual、expected、recommendation、evidence；可含 projectId、notes、relatedIssueIds、reviewState |
+| category | 字体 / 字重 / 颜色 / 间距 / 尺寸与对齐 / 线条 / 圆角；扩展前核对服务支持 |
+| findings | issueId、result；非待复核项还需 actual、expected、note、evidence，新增问题必有对应新增 finding |
+| result | 新增 / 仍存在 / 已修复 / 待复核；一个批次内同 issueId 不重复 |
+
+具体候选可用新增 finding 并与 issue 同设 reviewState 为待复核，新增条目不等于确认缺陷。finding 必须匹配本次 pages 的页面及平台。复测写入后续 finding，原始问题与历史快照保留。
+
+现有批次接口要求 rounds 至少三轮且末轮 newIssues 为 0：只有实际完成的检查才如此记录，轮次仅作折叠的内部依据，不为每轮另建批次。部分范围可形成局部批次，但 scope、conclusion、pages、rounds 必须限定真实完成范围。若当前校验无法表达真实情况，说明接口限制，不虚造复核或自行扩展网站来凑记录。
+
+计数、issueSnapshots、snapshotAt 由服务生成，客户端不提供可信总数或快照。当前总数以实时接口及页面筛选为准，不写死历史数量。
+
+## 素材、预览与补证
+
+素材放 `assets/runs/<runId>/`，保存原图与来源，发布后不覆盖归档图片；页面和当次 finding 使用本批次证据。轻量缩略图不能替换原图。生成图要区分真实像素问题、容器背景与生成链假设，不通过修图消除原始证据。
+
+既有批次补图不改原问题、finding、快照或状态。先检查站点的 `assets/evidence-locations.js` 追加定位索引，用 `<原runId>:<issueId>` 关联补证，记录日期、来源与哈希；补证不虚构新验收轮次。真正重验才另建批次。
+
+使用目标站已有 `scripts/publish-run.mjs --help` 确认参数；只向多项目预览通过脚本增量提交，并用 `scripts/check-integrity.mjs` 检查。当前脚本支持 --site、--origin、--input、--assets，以及素材已备好时的 --check；--check 与 --assets 不混用。不要直接改运行中的 review.json 或开第二写入实例。该环境承载真实验收数据，接口与状态测试仍需另用隔离数据库，不在日常库创建测试条目。
+
+交付前核对项目、端别、状态筛选与计数；确认双图缩略图、编号框、原图、Figma 映射、批次历史与候选标识。网页改动需检查 PC/移动布局。状态同步、删除/恢复、重启持久化等会改数据的测试在隔离数据库执行。
+
+## 当前交付与历史环境
+
+在多项目预览完成结果核验后，直接交付该站的项目与批次链接。用户说“发布”时，指更新当前工作环境；不默认再同步旧正式站，也不根据过去的正式发布授权继续向旧环境写入。日常新增报告、补图及状态维护按具体任务授权执行，已有授权不重复索要，不能扩展到未确认批次。
+
+写入前读取当前 revision、编号与状态；维护站点代码或处理历史数据前备份当前代码、数据库和素材。409 时重读并复核编号、状态和冲突后重试，不盲目覆盖；离线副本由当前服务生成，不能用旧数据库或测试副本整库替换。
+
+旧环境保留的历史差异未自动迁入，按 projects 中的登记另行核对。此工作入口决定不授权删除文件、停用旧服务或合并数据库；后续明确要求时再执行相应操作。若用户以后明确指定其他环境发布，届时重新核实目标、备份、并发状态与差异，通过目标服务增量提交，不能整库覆盖。
+
+交付前验证当前项目入口、批次、图片、状态及历史。入口目前为本机回环地址，不宣称其他设备可访问；只有用户提出共享或部署任务时才处理相应访问方式。

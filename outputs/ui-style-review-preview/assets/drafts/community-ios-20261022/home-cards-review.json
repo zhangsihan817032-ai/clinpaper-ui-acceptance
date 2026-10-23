@@ -1,0 +1,246 @@
+{
+  "status": "sample-review-complete-with-uncovered-types",
+  "projectId": "community",
+  "platform": "ios",
+  "date": "2026-10-22",
+  "scope": "首页关注信息流五类已取得卡片，课程卡片旁查；不代表首页全类型通过",
+  "confirmedNewIssues": 0,
+  "reportQa": {
+    "desktop": [
+      1440,
+      900
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "note": "已核对局部裁切与原图链接；本轮不修改数据库与状态控件"
+  },
+  "source": "iPhone镜像真实运行截图，410×898，含Mac窗口边框；App构建、设备型号、iOS、DPR、显示及字体缩放未知；实际数值仅截图估测，非iOS pt",
+  "designFileKey": "3u1UKn9czqHZeqBeq3w6ej",
+  "samples": [
+    {
+      "type": "双列图文",
+      "result": "样本未见明确新增偏差",
+      "figmaNode": "0:2783",
+      "designSize": [
+        183,
+        240
+      ],
+      "actual": {
+        "asset": "assets/actual-home-cards-structure-07.png",
+        "kind": "actual",
+        "width": 410,
+        "height": 898,
+        "crop": [
+          8,
+          262,
+          184,
+          240
+        ]
+      },
+      "design": {
+        "asset": "assets/design-home-dual.png",
+        "kind": "figma",
+        "width": 183,
+        "height": 240
+      },
+      "recheck": "assets/actual-home-cards-recheck-top.png",
+      "checked": [
+        "封面比例与下方渐变数据",
+        "标题14/20与两行预留区域",
+        "头像24和信息12/16",
+        "图片下8与左右12的间距关系",
+        "标签11/16、卡片圆角12"
+      ]
+    },
+    {
+      "type": "双列视频",
+      "result": "样本未见明确新增偏差",
+      "figmaNode": "0:2883",
+      "designSize": [
+        183,
+        240
+      ],
+      "actual": {
+        "asset": "assets/actual-home-cards-structure-11.png",
+        "kind": "actual",
+        "width": 410,
+        "height": 898,
+        "crop": [
+          201,
+          464,
+          184,
+          240
+        ]
+      },
+      "design": {
+        "asset": "assets/design-home-video.png",
+        "kind": "figma",
+        "width": 183,
+        "height": 240
+      },
+      "recheck": "assets/actual-home-cards-recheck-02.png",
+      "checked": [
+        "播放图标居中",
+        "封面183/122比例",
+        "底部数据区",
+        "一行和两行标题预留",
+        "作者及版块标签"
+      ]
+    },
+    {
+      "type": "横向有图帖",
+      "result": "样本未见明确新增偏差",
+      "figmaNode": "0:2951",
+      "designSize": [
+        374,
+        191
+      ],
+      "actual": {
+        "asset": "assets/actual-home-cards-structure-05.png",
+        "kind": "actual",
+        "width": 410,
+        "height": 898,
+        "crop": [
+          8,
+          292,
+          377,
+          191
+        ]
+      },
+      "design": {
+        "asset": "assets/design-home-horizontal.png",
+        "kind": "figma",
+        "width": 374,
+        "height": 191
+      },
+      "recheck": "assets/actual-home-cards-recheck-05.png",
+      "checked": [
+        "标题、用户信息、摘要图片、标签、数据更多的顺序",
+        "标题17/24",
+        "上下16左右12的内边距关系",
+        "头像24、图片96/64及圆角8",
+        "图与作者区顶部对齐",
+        "摘要两行截断与全文",
+        "无投票评论块残留"
+      ]
+    },
+    {
+      "type": "横向无图帖",
+      "result": "样本未见明确新增偏差",
+      "figmaNode": "0:3872",
+      "designSize": [
+        374,
+        191
+      ],
+      "actual": {
+        "asset": "assets/actual-home-cards-structure-09.png",
+        "kind": "actual",
+        "width": 410,
+        "height": 898,
+        "crop": [
+          8,
+          244,
+          377,
+          190
+        ]
+      },
+      "design": {
+        "asset": "assets/design-home-noimage.png",
+        "kind": "figma",
+        "width": 374,
+        "height": 191
+      },
+      "recheck": "assets/actual-home-cards-recheck-01.png",
+      "checked": [
+        "正文使用内容宽度350",
+        "一行两行标题和摘要高度自适应",
+        "长用户名及身份信息",
+        "标签与互动数据分层",
+        "更多入口",
+        "无空白图片占位"
+      ]
+    },
+    {
+      "type": "同行推荐",
+      "result": "未关注状态样本未见明确新增偏差",
+      "figmaNode": "0:2996",
+      "designSize": [
+        183,
+        240
+      ],
+      "actual": {
+        "asset": "assets/actual-home-cards-structure-07.png",
+        "kind": "actual",
+        "width": 410,
+        "height": 898,
+        "crop": [
+          201,
+          511,
+          184,
+          240
+        ]
+      },
+      "design": {
+        "asset": "assets/design-home-recommend.png",
+        "kind": "figma",
+        "width": 183,
+        "height": 240
+      },
+      "recheck": "assets/actual-home-cards-recheck-04.png",
+      "checked": [
+        "双色标题18/25",
+        "更多入口",
+        "子卡片167/60与间距8、圆角8",
+        "头像36、名称14/20和身份10/14",
+        "两个加号未关注状态"
+      ]
+    }
+  ],
+  "adjacentChecks": [
+    {
+      "type": "课程卡片",
+      "note": "设计备注没改，作为直接相邻区域旁查，不算本次新功能完整验收",
+      "actual": "assets/actual-home-cards-recheck-course.png"
+    }
+  ],
+  "rounds": [
+    {
+      "name": "结构检查",
+      "range": "向下采集14段卡片视图并额外采集多视频样本，建立五类相关卡片及课程映射",
+      "newIssues": 0
+    },
+    {
+      "name": "参数与截图细查",
+      "range": "读取当前Figma卡片、文本、图片、标签、推荐子卡及备注；比较比例、间距、尺寸、对齐、圆角和可见层级",
+      "newIssues": 0
+    },
+    {
+      "name": "回看复核",
+      "range": "重新滚动回查双列图文和视频、横向有图和无图、同行推荐及课程；保留recheck证据",
+      "newIssues": 0,
+      "limitation": "仅已取得样本，无全范围收敛结论"
+    }
+  ],
+  "notCovered": [
+    "横向视频帖",
+    "关注版块推荐卡片",
+    "学术广告卡片",
+    "多个标签同时存在时的优先级",
+    "已关注按钮状态"
+  ],
+  "designNotes": "assets/design-home-card-notes.png",
+  "publication": "确认问题DXY-001和已覆盖范围已登记到统一报告预览；候选与未覆盖状态待复核；正式网站尚未发布本批次",
+  "registration": {
+    "environment": "preview",
+    "runId": "dxy-20261022-ios-dynamic-partial",
+    "issueIds": [
+      "DXY-001"
+    ],
+    "revision": 45,
+    "issuesUrl": "http://127.0.0.1:8786/index.html#project/community/issues?platform=ios",
+    "runUrl": "http://127.0.0.1:8786/index.html#project/community/run/dxy-20261022-ios-dynamic-partial"
+  }
+}

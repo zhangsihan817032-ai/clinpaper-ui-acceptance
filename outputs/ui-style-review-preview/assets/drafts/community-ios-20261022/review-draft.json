@@ -1,0 +1,186 @@
+{
+  "status": "registered-partial-review",
+  "projectId": "community",
+  "platform": "ios",
+  "date": "2026-10-22",
+  "scope": "新增动态内容；仅已实际取证的可访问状态",
+  "supplements": [
+    {
+      "scope": "首页卡片专项补查",
+      "metadata": "home-cards-review.json",
+      "confirmedNewIssues": 0,
+      "note": "五类已取得卡片完成三阶段检查，未出现的卡片类型与状态仍待复核"
+    }
+  ],
+  "figma": {
+    "fileKey": "3u1UKn9czqHZeqBeq3w6ej",
+    "pageId": "0:1"
+  },
+  "metadata": {
+    "source": "本机 iPhone 镜像的真实运行截图，含 Mac 窗口边框和工具栏",
+    "appVersion": "未知，未验证目标发布版本",
+    "device": "iPhone 型号未知",
+    "osVersion": "未知",
+    "nativeScreenshotSize": "未知，镜像图不是手机原始截图",
+    "dpr": "未知",
+    "displayScale": "镜像使用显示→调大；手机显示缩放未知",
+    "fontScale": "未知",
+    "actualImageSize": [
+      410,
+      898
+    ],
+    "limitations": [
+      "部分镜像图内容存在横向位移，不能用整图宽度推算 iOS pt",
+      "vConsole 暂记环境差异",
+      "Mac 输入未弹出 iOS 软件键盘，不作为缺陷"
+    ]
+  },
+  "observations": [
+    {
+      "localId": "observation-1",
+      "status": "已确认，已登记到统一预览",
+      "category": "字体",
+      "priority": "P2",
+      "title": "文字模式占位文字小于设计",
+      "location": "发布内容 → 动态 → 文字 → 说说此刻的想法...",
+      "actual": "两次默认态灰色字形包围盒均218×26截图像素；卡片约352截图像素宽",
+      "expected": "设计字形包围盒232×27像素；卡片宽350；Figma字体30、行高160%即48、字距0、PingFang SC Medium",
+      "recommendation": "核对该占位文本的字体尺寸、字体与缩放设置，按设计视觉比例调整，在同设备条件下复拍默认态与聚焦态",
+      "measurement": "图像像素包围盒，灰度80–205；不是源码字号或iOS pt；实际根因尚未确认",
+      "evidence": {
+        "date": "2026-10-22",
+        "figmaNode": "I0:3149;91950:77054",
+        "actual": {
+          "asset": "assets/actual-text-poster-r2.png",
+          "kind": "actual",
+          "width": 410,
+          "height": 898,
+          "crop": [
+            35,
+            338,
+            310,
+            82
+          ],
+          "regions": [
+            {
+              "rect": [
+                50,
+                360,
+                228,
+                40
+              ],
+              "label": "1 · 占位文字"
+            }
+          ],
+          "version": "App/构建、iPhone型号、iOS、DPR及字体缩放未知；镜像放大；真实运行截图"
+        },
+        "design": {
+          "asset": "assets/design-text.png",
+          "kind": "figma",
+          "width": 390,
+          "height": 844,
+          "crop": [
+            35,
+            294,
+            310,
+            82
+          ],
+          "regions": [
+            {
+              "rect": [
+                49,
+                316,
+                242,
+                40
+              ],
+              "label": "1 · 占位文字"
+            }
+          ],
+          "version": "2026-10-22 Figma Frame 0:3144"
+        },
+        "repeatAssets": [
+          "assets/actual-text-poster-r1.png",
+          "assets/actual-text-focused-r3.png"
+        ]
+      },
+      "issueId": "DXY-001"
+    },
+    {
+      "localId": "candidate-a",
+      "status": "候选待复核，已进入统一预览问题总表，由用户判断是否忽略",
+      "category": "间距",
+      "title": "缩略图与标题之间的留白偏紧",
+      "location": "发动态 → 图片区 → 标题输入占位",
+      "figmaNode": "0:3271",
+      "expected": "图片78×78；图片底边到标题文本框24个设计坐标单位",
+      "actualAsset": "assets/actual-editor.png",
+      "designAsset": "assets/design-editor.png",
+      "remaining": "仍缺重新进入同一单图编辑状态复现及统一尺度测量",
+      "issueId": "DXY-002"
+    }
+  ],
+  "checks": [
+    {
+      "phase": "结构检查",
+      "scope": "首页首屏、发布面板、图片编辑、预览、文字和详情映射",
+      "confirmedAdded": 0,
+      "candidateAdded": 1
+    },
+    {
+      "phase": "参数与截图细查",
+      "scope": "卡片、占位文字、图片、编辑间距与发布面板；文字模式两次重新进入",
+      "confirmedAdded": 1,
+      "candidateAdded": 0
+    },
+    {
+      "phase": "可访问范围复核",
+      "scope": "文字聚焦、首页首屏、发布面板、详情首屏与讨论区",
+      "confirmedAdded": 0,
+      "candidateAdded": 0,
+      "note": "不含重新进入图片编辑与未取得的状态，不代表全范围收敛"
+    }
+  ],
+  "notCovered": [
+    "长正文首中尾",
+    "长文本生成卡片",
+    "单图隐藏分页点",
+    "不同数量图片切换",
+    "相册选中态",
+    "选择版块",
+    "上传及审核状态"
+  ],
+  "siteVerification": {
+    "desktop": [
+      1440,
+      900
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "brokenDisplayedImages": 0,
+    "existingSiteIntegrity": "登记后完整性校验另见统一网站；ClinPaper保持82 issues / 8 runs及原状态"
+  },
+  "databaseReads": {
+    "previewRevision": 46,
+    "productionRevision": 43,
+    "previewCommunityIssues": 2,
+    "previewCommunityRuns": 2,
+    "productionCommunityIssues": 0,
+    "productionCommunityRuns": 0
+  },
+  "publication": "确认问题DXY-001与候选DXY-002均已进入统一预览问题总表；候选尚未确认为缺陷，由用户判断是否忽略；未覆盖状态保留批次范围；正式站尚未发布",
+  "registration": {
+    "environment": "preview",
+    "runId": "dxy-20261022-ios-dynamic-partial",
+    "issueIds": [
+      "DXY-001",
+      "DXY-002"
+    ],
+    "revision": 46,
+    "issuesUrl": "http://127.0.0.1:8786/index.html#project/community/issues?platform=ios",
+    "runUrl": "http://127.0.0.1:8786/index.html#project/community/run/dxy-20261022-ios-dynamic-partial",
+    "candidateRunId": "dxy-20261022-ios-candidate-register"
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UI 样式验收中心</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <link rel="stylesheet" href="assets/evidence-locations.css">
+  <link rel="stylesheet" href="assets/projects.css">
+  <link rel="stylesheet" href="assets/readability.css">
+  <script src="assets/offline-snapshot.js" defer></script>
+  <script src="assets/previews.js" defer></script>
+  <script src="assets/evidence-locations.js" defer></script>
+  <script src="assets/community-source-thumbnails.js" defer></script>
+  <script src="assets/projects.js" defer></script>
+  <script src="assets/presentation.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">跳到主要内容</a>
+  <header>
+    <a class="brand" href="#projects"><span class="logo">验</span><strong>设计验收</strong></a>
+    <span id="sync-status" class="sync" role="status" aria-live="polite">正在连接共享状态</span>
+  </header>
+  <div class="shell">
+    <nav aria-label="验收导航">
+      <a href="#projects">全部项目</a>
+    </nav>
+    <main id="content" tabindex="-1"><p>正在加载…</p></main>
+  </div>
+  <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+  <dialog id="viewer"><div class="viewer-bar"><span id="viewer-title">截图原图</span><div class="actions"><button type="button" class="btn" id="viewer-zoom" aria-pressed="false">原尺寸查看</button><button type="button" class="btn" id="viewer-close">关闭</button></div></div><div class="viewer-stage"><img id="viewer-image" alt="验收截图原图"><div id="viewer-marks" aria-hidden="true"></div></div><div id="viewer-legend"></div></dialog>
+  <noscript>此验收中心需要启用 JavaScript 才能查看记录和更新问题状态。</noscript>
+</body>
+</html>

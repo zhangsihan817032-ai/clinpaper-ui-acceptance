@@ -5,10 +5,12 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
-    "start": "node outputs/clinpaper-ui-style-review/server.mjs",
+    "start": "node outputs/ui-style-review-preview/server.mjs",
+    "start:legacy": "node outputs/clinpaper-ui-style-review/server.mjs",
     "preview:prepare": "node outputs/clinpaper-ui-local-workflow/prepare-preview.mjs",
     "preview": "node outputs/clinpaper-ui-local-workflow/start-preview.mjs",
-    "check": "node outputs/clinpaper-ui-style-review/scripts/check-integrity.mjs outputs/clinpaper-ui-style-review",
-    "test": "node --test tests/review-store.test.mjs"
+    "check": "node outputs/ui-style-review-preview/scripts/check-integrity.mjs outputs/ui-style-review-preview",
+    "check:legacy": "node outputs/clinpaper-ui-style-review/scripts/check-integrity.mjs outputs/clinpaper-ui-style-review",
+    "test": "node --test tests/review-store.test.mjs outputs/ui-style-review-preview/tests/projects.test.mjs"
   }
 }

@@ -1,0 +1,12 @@
+import {writeFile,rename} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {ReviewStore} from '../store.mjs';
+import {PROJECTS} from '../project-config.mjs';
+const root=resolve(process.argv[2]||fileURLToPath(new URL('..',import.meta.url)));
+const store=await new ReviewStore(resolve(process.env.REVIEW_FILE||resolve(root,'data/review.json')),root).open();
+const snapshots=Object.fromEntries(PROJECTS.map(p=>[p.id,store.snapshot(p.id)]));
+const file=resolve(root,'assets/offline-snapshot.js');
+await writeFile(file+'.tmp','window.UI_REVIEW_SNAPSHOTS='+JSON.stringify(snapshots).replace(/</g,'\\u003c')+';\nwindow.CLINPAPER_SNAPSHOT=window.UI_REVIEW_SNAPSHOTS.clinpaper;\n');
+await rename(file+'.tmp',file);
+console.log(JSON.stringify({ok:true,revision:store.db.revision,projects:PROJECTS.map(p=>p.id),databaseWritten:false}));

@@ -1,0 +1,9 @@
+{
+  "environment": "local-preview",
+  "source": "/Users/dingxiangyuan/Documents/Codex/2026-10-20/https-sci-dxy-net-paper-create/outputs/clinpaper-ui-style-review",
+  "createdAt": "2026-10-21T03:38:42.172Z",
+  "sourceRevision": 1,
+  "origin": "http://127.0.0.1:8786",
+  "purpose": "多项目、多端改造的隔离预览；复制既有草稿，不包含本次新验收批次",
+  "publishRequiresUserConfirmation": true
+}

@@ -4,7 +4,16 @@ node_modules/
 .env.*
 *.log
 work/
+/outputs/*
+!/outputs/clinpaper-ui-acceptance/
+!/outputs/clinpaper-ui-local-workflow/
+!/outputs/clinpaper-ui-style-review/
+!/outputs/ui-style-review-preview/
 outputs/clinpaper-ui-style-review-preview/
 outputs/clinpaper-ui-style-review/data/backups/
 outputs/clinpaper-ui-style-review/data/*.tmp
 outputs/clinpaper-ui-style-review/data/*.json.*.tmp
+outputs/ui-style-review-preview/data/backups/
+outputs/ui-style-review-preview/drafts/
+outputs/ui-style-review-preview/data/*.tmp
+outputs/ui-style-review-preview/data/*.json.*.tmp
