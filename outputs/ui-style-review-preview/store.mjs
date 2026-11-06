@@ -10,6 +10,20 @@ const required = (v, name) => { if (typeof v !== 'string' || !v.trim()) fail(`�
 const array = (v, name) => { if (!Array.isArray(v)) fail(`${name} 必须是数组`); };
 const notes = (v, name) => { if(v!==undefined && (!Array.isArray(v)||v.some(n=>typeof n!=='string'))) fail(`${name} 必须是字符串数组`); };
 const clone = v => structuredClone(v);
+// Server-only provenance policy. A platform must use its own product repository.
+const SOURCE_RULES = {
+  community: {
+    android: {repository:'https://gitlab.dxy.net/android-developer/idxyer-2016',path:/^(app|dxycommon)\/[a-zA-Z0-9_./-]+$/},
+    ios: {repository:'https://gitlab.dxy.net/ios-developer/dxyer',path:/^(src|Modules)\/[a-zA-Z0-9_./-]+$/},
+    harmony: {repository:'https://gitlab.dxy.net/ohos/idxyer-2024/idxyer-ohos',path:/^entry\/src\/main\/[a-zA-Z0-9_./-]+$/},
+    'web-pc': {repository:'https://gitlab.dxy.net/f2e/tod/bbs-hybrid-mobile',path:/^src\/[a-zA-Z0-9_./-]+$/},
+    'web-mobile': {repository:'https://gitlab.dxy.net/f2e/tod/bbs-hybrid-mobile',path:/^src\/[a-zA-Z0-9_./-]+$/},
+  },
+  clinpaper: {
+    'web-pc': {repository:'https://gitlab.dxy.net/f2e/tod/clinic-paper',path:/^src\/[a-zA-Z0-9_./-]+$/},
+    'web-mobile': {repository:'https://gitlab.dxy.net/f2e/tod/clinic-paper',path:/^src\/[a-zA-Z0-9_./-]+$/},
+  },
+};
 
 export class ReviewStore {
   constructor(path, root) { this.path=path; this.root=root; this.queue=Promise.resolve(); }
@@ -89,6 +103,21 @@ export class ReviewStore {
     await sandbox.publish(payload,projectId);
     return sandbox.db.runs.at(-1);
   }
+  async checkSourceAcceptance(finding,issue,runId,projectId) {
+    const source=finding.evidence?.source,design=finding.evidence?.design;
+    const rule=SOURCE_RULES[projectId]?.[platformOf(issue)];
+    const pending=finding.result==='待复核';
+    if(finding.verificationBasis!=='source'||finding.reviewState!==(pending?'待复核':'源码已复核'))fail('源码验收须显式标注核验依据，不可冒充运行验证');
+    if(pending&&finding.verified===true)fail('依据不足的源码复核不可标记通过');
+    if(!rule||!source||source.repository!==rule.repository||typeof source.commit!=='string'||!/^[a-f0-9]{40}$/.test(source.commit)||typeof source.path!=='string'||!rule.path.test(source.path)||source.path.split('/').some(s=>!s||s==='.'||s==='..')||!Number.isSafeInteger(source.lineStart)||source.lineStart<1||!Number.isSafeInteger(source.lineEnd)||source.lineEnd<source.lineStart)fail('源码验收缺少匹配项目与端别的仓库、固定提交和有效代码位置');
+    required(source.excerpt,'源码验收摘录');
+    required(source.resolution,'源码生效链与资源解析依据');
+    if(design?.kind!=='figma'||!/\.(png|jpe?g|webp)$/i.test(design.asset||''))fail('源码验收须提供当前设计图');
+    required(design.version,'设计读取版本');required(finding.evidence.figmaNode,'设计节点');
+    await this.checkAsset(finding.evidence.asset,runId);
+    required(finding.evidence.coordinates,'finding.evidence.coordinates');
+    await this.checkAsset(design.asset,runId);
+  }
   async publish(payload,projectId='clinpaper') {
     payload=clone(payload);
     const project=this.project(projectId);
@@ -153,7 +182,7 @@ export class ReviewStore {
       const sourceAcceptance=r.evidenceMode==='source-acceptance';
       if(sourceAcceptance) {
         required(r.acceptanceBasis,'源码验收口径与用户要求');
-        if(projectId!=='community'||r.pages.some(p=>p.platform!=='android'))fail('当前源码验收仅支持社区Android');
+        if(r.pages.some(p=>!SOURCE_RULES[projectId]?.[platformOf(p)]))fail('当前项目或端别不支持源码验收');
         if(r.pages.some(p=>!['源码已复核','待复核'].includes(p.status)))fail('源码验收页面须明确区分源码与运行复核');
       }
       const counts={added:payload.newIssues.length,fixed:0,reopened:0,pendingReview:r.pages.filter(p=>p.status!=='已复核'&&!(sourceAcceptance&&p.status==='源码已复核')).length};
@@ -163,11 +192,12 @@ export class ReviewStore {
         seen.add(issue.id);required(finding.note,'finding.note');
         if(!r.pages.some(p=>p.id===issue.pageId&&platformOf(p)===platformOf(issue))) fail('复核问题需关联本次页面与端别');
         if(newIds.has(issue.id)!==(finding.result==='新增')) fail('新增问题与 findings 不匹配');
+        if(sourceAcceptance)await this.checkSourceAcceptance(finding,issue,r.id,projectId);
         if(finding.result!=='待复核') {
           await this.checkAsset(finding.evidence?.asset,r.id);
           for(const key of ['actual','expected']) required(finding[key],`finding.${key}`);
           required(finding.evidence?.coordinates,'finding.evidence.coordinates');
-          if(projectId==='community') {
+          if(projectId==='community'&&!sourceAcceptance) {
             const sourceCandidate=r.evidenceMode==='source-comparison'&&['web-mobile','android','harmony'].includes(issue.platform)&&issue.reviewState==='待复核'&&finding.reviewState==='待复核'&&finding.result==='新增';
             if(sourceCandidate) {
               const source=finding.evidence?.source;
@@ -176,15 +206,6 @@ export class ReviewStore {
               if(!source||source.repository!==repository||!/^[a-f0-9]{40}$/.test(source.commit||'')||!pathPattern.test(source.path||'')||source.path.includes('..')||!Number.isInteger(source.lineStart)||source.lineStart<1||!Number.isInteger(source.lineEnd)||source.lineEnd<source.lineStart)fail('源码候选须包含有效仓库、固定提交和代码行定位');
               required(source.excerpt,'源码摘录');
               if(issue.evidence?.source?.commit!==source.commit||issue.evidence?.source?.path!==source.path)fail('源码候选与新增发现的定位不一致');
-            } else if(sourceAcceptance) {
-              const source=finding.evidence?.source,design=finding.evidence?.design;
-              if(finding.verificationBasis!=='source'||finding.reviewState!=='源码已复核')fail('源码验收须显式标注核验依据，不可冒充运行验证');
-              if(!source||source.repository!=='https://gitlab.dxy.net/android-developer/idxyer-2016'||!/^[a-f0-9]{40}$/.test(source.commit||'')||!/^(app|dxycommon)\/[a-zA-Z0-9_./-]+$/.test(source.path||'')||source.path.includes('..')||!Number.isInteger(source.lineStart)||source.lineStart<1||!Number.isInteger(source.lineEnd)||source.lineEnd<source.lineStart)fail('源码验收缺少固定提交和有效代码位置');
-              required(source.excerpt,'源码验收摘录');
-              required(source.resolution,'源码生效链与资源解析依据');
-              if(design?.kind!=='figma'||!/\.(png|jpe?g|webp)$/i.test(design.asset||''))fail('源码验收须提供当前设计图');
-              required(design.version,'设计读取版本');required(finding.evidence.figmaNode,'设计节点');
-              await this.checkAsset(design.asset,r.id);
             } else {
               const actual=finding.evidence?.visual?.actual;
               if(actual?.kind!=='actual'||!/\.(png|jpe?g|webp)$/i.test(actual.asset||''))fail('社区非待复核发现须有真实运行截图对照，不接受源码或重放图');

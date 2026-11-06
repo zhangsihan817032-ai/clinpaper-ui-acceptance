@@ -20,7 +20,7 @@
 node scripts/publish-run.mjs --site /absolute/site --origin http://127.0.0.1:8786 --input /absolute/run.json --assets /absolute/captures
 ```
 
-收到 409 后重读 revision 并复核，不强改版本号。Android 二次源码验收支持 `evidenceMode: source-acceptance`，必须有当前设计定位、固定提交和完整代码依据；通过时更新原问题，保留历史图片，不把它们展示成修改后的效果。其他端使用前核对当前接口支持范围。
+收到 409 后重读 revision 并复核，不强改版本号。所有已配置端别均支持二次源码验收 `evidenceMode: source-acceptance`：社区的 iOS、Android、鸿蒙、前端 PC／移动，以及 ClinPaper 的前端 PC／移动。每条仍须提供匹配项目与端别的仓库、40位提交号、有效代码位置、摘录、生效解析及当前设计图与节点；依据不足保持待处理。通过时更新原问题，保留历史图片，不把它们展示成修改后的效果；普通运行验收的证据要求不变。
 
 ## 检查与运行边界
 
