@@ -1,4 +1,4 @@
 interface:
   display_name: "设计验收 · 源码与设计稿"
-  short_description: "统一走查社区与 ClinPaper，二次验收核对源码与设计，更新原问题并保持报告简洁"
-  default_prompt: "使用 $design-acceptance，核实目标源码与设计稿；二次验收按原问题核对一致性并更新状态，仅记录必要结论与依据。"
+  short_description: "统一走查社区与 ClinPaper，覆盖默认态和交互后状态，保持报告简洁"
+  default_prompt: "使用 $design-acceptance，核实目标源码与设计稿，覆盖默认态及代码交互后的状态样式；二次验收按原问题核对一致性并更新状态，仅记录必要结论与依据。"
